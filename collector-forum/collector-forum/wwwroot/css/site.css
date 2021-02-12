@@ -105,3 +105,13 @@ div.login-form-icon {
 
 /* SOME SHIET*/
 
+#tologin {
+   float: right;
+   margin: 0px 20px 0px 0px;
+}
+
+#regbutt{
+    width: 120px;
+    height: 40px;
+    margin: 0px 0px 10px 0px;
+}
