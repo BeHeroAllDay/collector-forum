@@ -24,6 +24,8 @@ namespace collector_forum.Areas.Identity
                 {
                     options.SignIn.RequireConfirmedAccount = false;
                     options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
                 })
                 
                     .AddEntityFrameworkStores<AuthDBContext>();
