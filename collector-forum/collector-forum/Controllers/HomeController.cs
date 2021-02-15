@@ -23,15 +23,6 @@ namespace collector_forum.Controllers
             return View();
         }
 
-        public RedirectResult Login()
-        {
-            return new RedirectResult(url: "~/Identity/Account/Login", permanent: true, preserveMethod: true);
-        }
-
-        public RedirectResult Register()
-        {
-            return new RedirectResult(url: "~/Identity/Account/Register", permanent: true, preserveMethod: true);
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
