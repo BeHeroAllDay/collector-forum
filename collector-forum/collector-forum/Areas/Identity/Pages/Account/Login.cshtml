@@ -9,31 +9,31 @@
 <h1>@ViewData["Title"]</h1>
 <section>
     <form id="account" method="post">
-        <h4>Use a local account to log in.</h4>
-        <hr />
+        <h4>Enter your details below to continue</h4>
+        <br />
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="Input.Email"></label>
-            <input asp-for="Input.Email" class="form-control" />
-            <span asp-validation-for="Input.Email" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Input.Password"></label>
-            <input asp-for="Input.Password" class="form-control" />
-            <span asp-validation-for="Input.Password" class="text-danger"></span>
-            <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-        </div>
-        <div class="form-group">
-            <div class="checkbox">
-                <label asp-for="Input.RememberMe">
-                    <input asp-for="Input.RememberMe" />
-                    @Html.DisplayNameFor(m => m.Input.RememberMe)
-                </label>
+            <input asp-for="Input.Email" class="form-control" id="log" placeholder="Email" />
+            <span asp-validation-for="Input.Email" class="text-danger text-center"></span>
+            <div class="email-icon">
+                <i class="fas fa-envelope"></i>
             </div>
         </div>
-            <div class="col-sm"><button type="submit" class="btn btn-primary">Log in</button></div>
-            <div class="col-md"><p id="signup">Don't have an account?</p></div>
-            <div class="col-sm"><a id="toregister" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Sign up here!</a></div>
+        <div class="form-group">
+            <input asp-for="Input.Password" class="form-control" id="log" placeholder="Password" />
+            <span asp-validation-for="Input.Password" class="text-danger text-center"></span>
+            <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+            <div id="password-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+        </div>
+        <button id="logbutt" type="submit" class="btn btn-primary">Log in</button>
+        <div class="row">
+            <div id="toregister">
+                <a>Don't have an account?</a>
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Sign up here!</a>
+            </div>
+        </div>
     </form>
 </section>
 

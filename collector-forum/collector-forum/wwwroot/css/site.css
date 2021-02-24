@@ -75,33 +75,68 @@ div.card-content {
     padding: 10px 20px;
 }
 
-/*login form*/
-div.login-form-icon {
-    text-align: center;
-}
-
 .card {
     width: 500px;
 }
 
 /* SOME SHIET*/
 
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 #tologin {
    float: right;
    margin: 0px 20px 0px 0px;
-   padding: 10px 0px 0px 0px;
+   padding: 20px 0px 0px 0px;
 }
 
 #toregister {
+    align-items: center;
+    margin: auto;
+    padding: 20px 20px 5px 20px;
+}
+
+#forgot-password {
     float: right;
-    margin: 0px 20px 0px 0px;
-    padding: 10px 0px 0px 0px;
+    padding: 0px 40px 0px 0px;
 }
 
 #regbutt {
-    width: 120px;
-    height: 40px;
-    margin: 0px 0px 10px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 80%;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#logbutt {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 80%;
+}
+
+.text-center
+{
+    padding: 20px 20px;
+}
+
+.email-icon {
+    position: absolute;
+    margin: -60px 0px 0px 50px;
+    font-size: 20px;
+    color: #1ab394;
+}
+
+#password-icon {
+    position: absolute;
+    margin: -60px 10px 0px 50px;
+    font-size: 20px;
+    color: #1ab394;
 }
 
 /*FORUM*/
@@ -249,7 +284,7 @@ a.forum-item-title {
     .forum-info {
         margin: 15px 0 10px 0;
         /* Comment this is you want to show forum info in small devices */
-        /*display: none;*/
+        display: none;
     }
 
     .forum-desc {
@@ -319,21 +354,9 @@ a.forum-item-title {
     height: 90px !important;
 }
 
-.form-control, .single-line {
-    background-color: #FFFFFF;
-    background-image: none;
-    border: 1px solid #e5e6e7;
-    border-radius: 1px;
-    color: inherit;
-    display: block;
-    padding: 6px 12px;
-    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-    width: 100%;
-    font-size: 14px;
-}
-
 .text-navy {
     color: #1ab394;
+    margin-right: 20px;
 }
 
 .mid-icon {
@@ -343,3 +366,27 @@ a.forum-item-title {
 .m-b-sm {
     margin-bottom: 10px;
 }
+
+/* Pola w formularzach - pewnie do zmiany */
+#log{
+    border: unset;
+    border-bottom: 1px solid #343a40;
+    border-radius: unset;
+    color: inherit;
+    display: block;
+    padding: 5px 0px 5px 35px;
+    margin: auto;
+    width: 80%;
+}
+
+#reg {
+    border: unset;
+    border-bottom: 1px solid #343a40;
+    border-radius: unset;
+    color: inherit;
+    display: block;
+    padding: 5px 0px 5px 5px;
+    margin: auto;
+    width: 80%;
+}
+

@@ -19,5 +19,7 @@ namespace collector_forum.Areas.Identity.Data
         [PersonalData]
         [Column(TypeName = "nvarchar(100)")]
         public string LastName { get; set; }
+        [DisplayFormat(DataFormatString ="{0:DD.MMM.yyyy}")]
+        public DateTime RegistrationDate { get; set; }
     }
 }

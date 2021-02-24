@@ -6,6 +6,7 @@ using collector_forum.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using collector_forum.Models;
 
 namespace collector_forum.Data
 {
@@ -23,5 +24,7 @@ namespace collector_forum.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<collector_forum.Models.Role> Role { get; set; }
     }
 }

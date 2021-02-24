@@ -16,20 +16,30 @@ namespace collector_forum.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<AuthDBContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("AuthDBContextConnection")));
+                //services.AddDbContext<AuthDBContext>(options =>
+                //    options.UseSqlServer(
+                //        context.Configuration.GetConnectionString("AuthDBContextConnection")));
 
-                services.AddDefaultIdentity<ApplicationUser>(options =>
-                {
-                    options.SignIn.RequireConfirmedAccount = false;
-                    options.Password.RequireLowercase = false;
-                    options.Password.RequireUppercase = false;
-                    options.Password.RequireNonAlphanumeric = false;
-                })
-                
-                    .AddEntityFrameworkStores<AuthDBContext>();
+
+                //services.AddDefaultIdentity<ApplicationUser>(options =>
+                //{
+                //    options.SignIn.RequireConfirmedAccount = false;
+                //    options.Password.RequireLowercase = false;
+                //    options.Password.RequireUppercase = false;
+                //    options.Password.RequireNonAlphanumeric = false;
+                //})
+
+                 //services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+                 //{
+                 //    config.SignIn.RequireConfirmedEmail = true;
+                 //    config.Password.RequireLowercase = false;
+                 //    config.Password.RequireUppercase = false;
+                 //    config.Password.RequireNonAlphanumeric = false;
+                 //})
+
+                 //   .AddEntityFrameworkStores<AuthDBContext>();
             });
+
         }
     }
 }
