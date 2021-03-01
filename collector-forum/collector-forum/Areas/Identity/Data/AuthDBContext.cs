@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using collector_forum.Areas.Identity.Data;
-using Microsoft.AspNetCore.Identity;
+﻿using collector_forum.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using collector_forum.Models;
 
 namespace collector_forum.Data
 {
@@ -25,6 +19,5 @@ namespace collector_forum.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<collector_forum.Models.Role> Role { get; set; }
     }
 }

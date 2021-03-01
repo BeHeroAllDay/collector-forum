@@ -1,20 +1,22 @@
 ﻿@using collector_forum.Areas.Identity.Data
-@using collector_forum.Models
+@using Microsoft.AspNetCore.Identity
 
 @model IEnumerable<ApplicationUser>
+
 
 @{
     ViewBag.Title = "ListUsers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>All Users</h1>
+<h1>List of all users</h1>
 
 @if (Model.Any())
 {
     <table class="table">
         <thead>
             <tr>
+                <th scope="col">#</th>
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
@@ -28,39 +30,25 @@
                 <td>@user.Id</td>
                 <td>@user.Nickname</td>
                 <td>@user.Email</td>
-                <td>@user.RegistrationDate.ToString("dd.MM.YYYY")</td>
+                <td>@user.RegistrationDate.ToString("dd.MM.yyyy")</td>
+                <td class="btn btn-success">Edit</td>
+                <td class="btn btn-danger">Delete</td>
             </tr>
-
-                @*<div class="card mb-3">
-                        <div class="card-header">
-                            User ID : @user.Id
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">@user.Nickname</h5>
-                            <h5 class="card-title">@user.Email</h5>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="btn btn-success">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
-                        </div>
-                    </div>*@
             }
         </tbody>
     </table>
 }
 else
 {
-    <div class="card">
-        <div class="card-header">
-            No users created yet
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">
-                Use the button below to create a user
-            </h5>
-            <a class="btn btn-primary" style="width:auto" asp-controller="Account" asp-action="Register">
-                Add new user
-            </a>
+    <hr />
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h5 style="padding: 40px 0px 0px 0px; text-align: center;">There is no accounts created yet</h5>
+            <div class="col text-center">
+                <a asp-controller="Home" asp-action="Index">
+                    Return to main page
+                </a>
+            </div>
         </div>
     </div>
 }

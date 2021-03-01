@@ -35,9 +35,13 @@
                                 Manage
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="ListUsers">Users</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin") || User.IsInRole("Mod"))
+                                {
+                                    <a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="ListUsers">Users</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="Create">Create role</a>
+                                }
+                                <a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="ListRoles">Roles</a>
+
                             </div>
                         </li>
                     }

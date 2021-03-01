@@ -1,5 +1,3 @@
-using System;
-
 namespace collector_forum.Models
 {
     public class ErrorViewModel
