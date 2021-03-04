@@ -2,30 +2,40 @@
 @model IEnumerable<IdentityRole>
 
 @{
-    ViewData["Title"] = "All roles";
+    ViewData["Title"] = "Roles list";
 }
 
-<h1>All Roles</h1>
+<h1>List of all roles</h1>
 
 @if (Model.Any())
 {
-    <div class="card-deck">
+    <table class="table">
+        <tr style="font-size: 20px;">
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col" class="text-center align-middle">Action</th>
+        </tr>
+
         @foreach (var role in Model)
         {
-            <div class="card border-primary">
-                <div class="card-header">
-                    Role ID: @role.Id
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">@role.Name</h5>
-                </div>
-                <div class="card-footer">
-                    <a class="btn btn-primary" asp-action="EditRole" asp-controller="Admin" asp-route-id="@role.Id">Edit</a>
-                    <a class="btn btn-danger" asp-action="DeleteRole" asp-controller="Admin" asp-route-id="">Delete</a>
-                </div>
-            </div>
+            <tr style="font-size: 16px;">
+                <td class="align-middle">@role.Id</td>
+                <td class="align-middle">@role.Name</td>
+                <td class="text-center align-middle">
+                    <div btn-group align-top>
+                        <form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
+                            <a class="btn btn-success" asp-controller="Admin" asp-action="EditRole" asp-route-id="@role.Id">Edit</a>
+                            <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete role : @role.Name')">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
         }
-    </div>
+    </table>
+
 }
 else
 {

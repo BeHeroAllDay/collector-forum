@@ -20,6 +20,7 @@ namespace collector_forum
 
         public IConfiguration Configuration { get; }
 
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -29,6 +30,7 @@ namespace collector_forum
             services.AddDbContext<AuthDBContext>(options =>
                     options.UseSqlServer(
                         Configuration.GetConnectionString("AuthDBContextConnection")));
+
             services.AddDefaultIdentity<ApplicationUser>(options =>
                 {
                     options.SignIn.RequireConfirmedAccount = false;

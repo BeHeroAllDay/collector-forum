@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace collector_forum.Models
+namespace collector_forum.ViewModels
 {
-    public class Role
+    public class CreateRoleViewModel
     {
         public int RoleId { get; set; }
         [Required]
