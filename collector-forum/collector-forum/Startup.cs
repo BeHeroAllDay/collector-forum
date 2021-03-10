@@ -42,11 +42,6 @@ namespace collector_forum
                 })
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AuthDBContext>();
-
-            //services.ConfigureApplicationCookie(options =>
-            //{
-            //    options.AccessDeniedPath = new PathString("/Admin/AccessDenied");
-            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

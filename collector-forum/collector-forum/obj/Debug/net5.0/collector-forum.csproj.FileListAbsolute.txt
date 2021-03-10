@@ -172,7 +172,6 @@ D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\De
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Admin\EditUsersInRole.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Admin\ListRoles.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Admin\ListUsers.cshtml.g.cs
-D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Forum\ForumMain.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Shared\NotFound.cshtml.g.cs

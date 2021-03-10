@@ -22,11 +22,18 @@
         <div class="form-group">
             <input asp-for="Input.Password" class="form-control" id="log" placeholder="Password" />
             <span asp-validation-for="Input.Password" class="text-danger text-center"></span>
-            <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+            @*<a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>*@
             <div id="password-icon">
                 <i class="fas fa-lock"></i>
             </div>
+            <div class="checkbox" id="remember">
+                <label asp-for="Input.RememberMe">
+                    <input asp-for="Input.RememberMe" />
+                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                </label>
+            </div>
         </div>
+            
         <button id="logbutt" type="submit" class="btn btn-primary">Log in</button>
         <div class="row">
             <div id="toregister">
