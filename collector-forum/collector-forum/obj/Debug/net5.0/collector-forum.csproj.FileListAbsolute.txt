@@ -189,3 +189,6 @@ D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\De
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\Debug\net5.0\ref\collector-forum.dll
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\Debug\net5.0\collector-forum.pdb
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\Debug\net5.0\collector-forum.genruntimeconfig.cache
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\Debug\net5.0\collector-forum.csprojAssemblyReference.cache
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Admin\ManageUserClaims.cshtml.g.cs
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Admin\ManageUserRoles.cshtml.g.cs

@@ -2,6 +2,7 @@ using collector_forum.Areas.Identity.Data;
 using collector_forum.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -37,9 +38,15 @@ namespace collector_forum
                     options.Password.RequireLowercase = false;
                     options.Password.RequireUppercase = false;
                     options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequiredUniqueChars = 3;
                 })
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AuthDBContext>();
+
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    options.AccessDeniedPath = new PathString("/Admin/AccessDenied");
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
