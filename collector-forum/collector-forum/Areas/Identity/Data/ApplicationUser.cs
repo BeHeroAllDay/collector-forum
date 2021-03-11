@@ -17,6 +17,10 @@ namespace collector_forum.Areas.Identity.Data
         [Column(TypeName = "nvarchar(100)")]
         public string LastName { get; set; }
         [DisplayFormat(DataFormatString = "{0:DD.MMM.yyyy}")]
+        [Required]
+        [Display(Name = "Birth Date")]
+        [DataType(DataType.Date)]
+        public DateTime DOB { get; set; }
         public DateTime RegistrationDate { get; set; }
     }
 }
