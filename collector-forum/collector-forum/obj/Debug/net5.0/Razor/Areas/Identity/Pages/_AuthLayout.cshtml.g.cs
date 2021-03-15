@@ -35,13 +35,13 @@ using collector_forum.Areas.Identity.Pages;
 #nullable disable
 #nullable restore
 #line 5 "D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\Areas\Identity\Pages\_ViewImports.cshtml"
-using collector_forum.Areas.Identity.Data;
+using collector_forum.Data;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"16cf00b55ad0c6c16496133ac44bc29cc6e4e996", @"/Areas/Identity/Pages/_AuthLayout.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"99ea4099628a4adb58455af625188c6bea166444", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4b4c7aa36a96b25f320be0bdbec0b8365b95754c", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
     public class Areas_Identity_Pages__AuthLayout : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

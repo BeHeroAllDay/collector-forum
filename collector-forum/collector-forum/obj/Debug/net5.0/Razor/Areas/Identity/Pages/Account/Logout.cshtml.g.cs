@@ -35,7 +35,7 @@ using collector_forum.Areas.Identity.Pages;
 #nullable disable
 #nullable restore
 #line 5 "D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\Areas\Identity\Pages\_ViewImports.cshtml"
-using collector_forum.Areas.Identity.Data;
+using collector_forum.Data;
 
 #line default
 #line hidden
@@ -48,7 +48,7 @@ using collector_forum.Areas.Identity.Pages.Account;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9bda081e18dd8c851ef4e2a28b1434286f35f566", @"/Areas/Identity/Pages/Account/Logout.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"99ea4099628a4adb58455af625188c6bea166444", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4b4c7aa36a96b25f320be0bdbec0b8365b95754c", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"534d705f3beb7dd76da718ead39b89e1c90c8952", @"/Areas/Identity/Pages/Account/_ViewImports.cshtml")]
     public class Areas_Identity_Pages_Account_Logout : global::Microsoft.AspNetCore.Mvc.RazorPages.Page
     {
@@ -108,7 +108,7 @@ using collector_forum.Areas.Identity.Pages.Account;
 #line hidden
 #nullable disable
             WriteLiteral("            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9bda081e18dd8c851ef4e2a28b1434286f35f5666579", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9bda081e18dd8c851ef4e2a28b1434286f35f5666564", async() => {
                 WriteLiteral("\r\n                <button type=\"submit\" class=\"nav-link btn btn-link text-dark\">Click here to Logout</button>\r\n            ");
             }
             );

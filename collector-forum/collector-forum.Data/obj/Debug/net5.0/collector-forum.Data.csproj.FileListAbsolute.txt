@@ -1,0 +1,14 @@
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\bin\Debug\net5.0\collector-forum.Data.deps.json
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\bin\Debug\net5.0\collector-forum.Data.runtimeconfig.json
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\bin\Debug\net5.0\collector-forum.Data.runtimeconfig.dev.json
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\bin\Debug\net5.0\collector-forum.Data.dll
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\bin\Debug\net5.0\ref\collector-forum.Data.dll
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\bin\Debug\net5.0\collector-forum.Data.pdb
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\collector-forum.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\collector-forum.Data.AssemblyInfoInputs.cache
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\collector-forum.Data.AssemblyInfo.cs
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\collector-forum.Data.csproj.CoreCompileInputs.cache
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\collector-forum.Data.dll
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\ref\collector-forum.Data.dll
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\collector-forum.Data.pdb
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\collector-forum.Data.genruntimeconfig.cache

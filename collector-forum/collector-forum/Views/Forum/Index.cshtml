@@ -1,0 +1,25 @@
+﻿@model collector_forum.Models.Category.CategoryIndexModel
+
+@{ 
+    ViewData["Title"] = "Categories";
+}
+
+<h1>Categories</h1>
+
+<table class="table table-hover" id="categoryIndexTable">
+    <tbody>
+        @foreach (var category in Model.CategoryList)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="Forum" asp-action="Topic" asp-route-id="@category.Id">
+                        @category.Name
+                    </a>
+                </td>
+                <td disabled>
+                    @category.Description
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -19,4 +19,13 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\collector-forum.Data\collector-forum.Data.csproj" />
+    <ProjectReference Include="..\collector-forum.Service\collector-forum.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\categories\" />
+  </ItemGroup>
+
 </Project>

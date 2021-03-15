@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using collector_forum.Areas.Identity.Data;
+using collector_forum.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

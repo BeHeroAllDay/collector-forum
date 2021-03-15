@@ -1,8 +1,8 @@
-using collector_forum.Areas.Identity.Data;
 using collector_forum.Data;
+using collector_forum.Data.Models;
+using collector_forum.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,7 +28,7 @@ namespace collector_forum
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddDbContext<AuthDBContext>(options =>
+            services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlServer(
                         Configuration.GetConnectionString("AuthDBContextConnection")));
 
@@ -40,11 +40,13 @@ namespace collector_forum
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequiredUniqueChars = 3;
 
-                    options.Lockout.MaxFailedAccessAttempts = 5;
+                    options.Lockout.MaxFailedAccessAttempts = 3;
                     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
                 })
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<AuthDBContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped<ICategory, CategoryService>();
+            services.AddScoped<IPost, PostService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

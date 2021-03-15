@@ -1,4 +1,4 @@
-﻿using collector_forum.Areas.Identity.Data;
+﻿using collector_forum.Data.Models;
 using collector_forum.Models;
 using collector_forum.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace collector_forum.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles="Admin")]
     public class AdminController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
