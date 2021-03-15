@@ -1,10 +1,11 @@
 ﻿@model collector_forum.Models.Home.HomeIndexModel
 @{
-    ViewData["Title"] = "Collectors Forum";
+    ViewData["Title"] = "collectors FORUM";
 }
 
 <div class="container body-content">
     <div class="row frontPageSplash">
+
         <div class="col-md-6 frontPageCategory">
             <div class="frontPageHeading">
                 Search, Inspire, Share knwoledge
@@ -12,13 +13,44 @@
             <p class="frontPageSubHeading">
                 Are you a collector? This Forum is the best place to share your collection and experience with others
             </p>
+
+            @*<div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">Search, Inspire, Share knwoledge</h1>
+                        <p class="lead">Are you a collector? This Forum is the best place to share your collection and experience with others.</p>
+                    </div>
+                </div>*@
+
+            @*<div class="card">
+                    <div class="card-header">
+                        Search, Inspire, Share knwoledge
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p>
+                                Are you a collector? This Forum is the best place to share your collection and experience with others
+                            </p>
+                        </blockquote>
+                    </div>
+                </div>*@
+
+
+
+
             <div>
                 <form asp-controller="Search" asp-action="Search" method="post">
+                    <button class="btn btn-primary btnsearch">Search</button>
                     <input asp-for="SearchQuery" type="text" class="homeSearch" placeholder="Search..." />
+
                 </form>
             </div>
         </div>
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            @*<form asp-controller="Search" asp-action="Search" method="post">
+                <button class="btn btn-primary btnsearch" >Search</button>
+                <input asp-for="SearchQuery" type="text" class="homeSearch" placeholder="Search..." />
+            </form>*@
+        </div>
     </div>
     <div class="row frontPageContent">
         <h3 id="latestPosts">Latest Posts</h3>

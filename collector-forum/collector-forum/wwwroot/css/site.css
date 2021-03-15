@@ -7,9 +7,42 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.navLogo {
+    background-image: url("/images/app-logo.png");
+    background-size: 120px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 120px;
+    height: 25px;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+.homeSearch:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.homeSearch {
+    float: right;
+    display: block;
+}
+
+.btnsearch {
+    float: right;
+    height: 30px;
+    width: 80px;
+    padding: 0px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 .btn-primary {
@@ -24,6 +57,7 @@ a {
   border-color: #1861ac;
 }
 
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -36,14 +70,20 @@ html {
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #343a40;
 }
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #343a40;
 }
 
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #343a40;
 }
 
 
@@ -56,7 +96,7 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    /*margin-bottom: 60px;*/
+    margin-bottom: 60px;
     background: #eee;
     min-height: 100%;
 }
@@ -74,16 +114,9 @@ body:after {
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
     opacity: 0.1;
     z-index: -1;
-}
-
-.bg-img {
-    
-}
-
-.bg-img:after {
-    
 }
 
 .footer {
@@ -97,7 +130,6 @@ body:after {
 .card-content {
     padding: 20px;
 }
-
 
 
 /* SOME SHIET*/
