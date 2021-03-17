@@ -47,18 +47,20 @@ namespace collector_forum.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [StringLength(25, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+            [StringLength(25, ErrorMessage = "{0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
             [DataType(DataType.Text)]
             [Display(Name = "Nickname")]
             public string Nickname { get; set; }
 
             [Required]
-            [DataType(DataType.Text)]
+            [RegularExpression(@"^[A-Z]+[a-zA-Z]*$", ErrorMessage = "First Name cannot be number!")]
+            [StringLength(255)]
             [Display(Name = "First Name")]
             public string FirstName { get; set; }
 
             [Required]
-            [DataType(DataType.Text)]
+            [RegularExpression(@"^[A-Z]+[a-zA-Z]*$", ErrorMessage = "Last Name cannot be number!")]
+            [StringLength(255)]
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
 

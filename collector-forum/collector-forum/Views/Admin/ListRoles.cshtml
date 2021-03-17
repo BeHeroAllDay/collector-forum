@@ -5,49 +5,52 @@
     ViewData["Title"] = "Roles list";
 }
 
-<h1>List of all roles</h1>
+<div class="rolesList">
 
-@if (Model.Any())
-{
-    <table class="table">
-        <tr style="font-size: 20px;">
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col" class="text-center align-middle">Action</th>
-        </tr>
+    <h1>List of all roles</h1>
 
-        @foreach (var role in Model)
-        {
-            <tr style="font-size: 16px;">
-                <td class="align-middle">@role.Id</td>
-                <td class="align-middle">@role.Name</td>
-                <td class="text-center align-middle">
-                    <div btn-group align-top>
-                        <form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
-                            <a class="btn btn-success" asp-controller="Admin" asp-action="EditRole" asp-route-id="@role.Id">Edit</a>
-                            <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Are you sure you want to delete role : @role.Name')">
-                                Delete
-                            </button>
-                        </form>
-                    </div>
-                </td>
+    @if (Model.Any())
+    {
+        <table class="table table-hover rolesTable">
+            <tr style="font-size: 20px;">
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col" class="text-center align-middle">Action</th>
             </tr>
-        }
-    </table>
 
-}
-else
-{
-    <hr />
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h2 style="padding: 0px 0px 0px 0px; margin-top: 100px; text-align: center;">There is no roles created yet</h2>
-            <div class="col text-center">
-                <a asp-controller="Admin" asp-action="Create">
-                    Create role
-                </a>
+            @foreach (var role in Model)
+            {
+                <tr style="font-size: 16px;">
+                    <td class="align-middle">@role.Id</td>
+                    <td class="align-middle">@role.Name</td>
+                    <td class="text-center align-middle">
+                        <div btn-group align-top>
+                            <form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
+                                <a class="btn btn-success" asp-controller="Admin" asp-action="EditRole" asp-route-id="@role.Id">Edit</a>
+                                <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure you want to delete role : @role.Name')">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+
+    }
+    else
+    {
+        <hr />
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2 style="padding: 0px 0px 0px 0px; margin-top: 100px; text-align: center;">There is no roles created yet</h2>
+                <div class="col text-center">
+                    <a asp-controller="Admin" asp-action="Create">
+                        Create role
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
+</div>

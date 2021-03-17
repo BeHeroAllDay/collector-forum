@@ -3,23 +3,24 @@
 @{ 
     ViewData["Title"] = "Categories";
 }
+<div class="categories">
+    <h1>Categories</h1>
 
-<h1>Categories</h1>
-
-<table class="table table-hover" id="categoryIndexTable">
-    <tbody>
-        @foreach (var category in Model.CategoryList)
-        {
-            <tr>
-                <td>
-                    <a asp-controller="Forum" asp-action="Topic" asp-route-id="@category.Id">
-                        @category.Name
-                    </a>
-                </td>
-                <td disabled>
-                    @category.Description
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <table class="table table-hover" id="categoryIndexTable">
+        <tbody>
+            @foreach (var category in Model.CategoryList)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Forum" asp-action="Topic" asp-route-id="@category.Id">
+                            @category.Name
+                        </a>
+                    </td>
+                    <td disabled>
+                        @category.Description
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

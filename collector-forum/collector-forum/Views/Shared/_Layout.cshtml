@@ -18,89 +18,88 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> @*Material Design Icons*@
 </head>
 <body>
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand navLogo" asp-controller="Home" asp-action="Index"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Forum" asp-action="Index">Categories</a>
-                            </li>
-                            @if (signInManager.IsSignedIn(User))
-                            {
-                                <li class="dropdown">
-                                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Settings
-                                        <span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li role="separator" class="dropdown-divider"></li>
-                                        <li class="dropdown-header">Profile</li>
-                                        <li>
-                                            <a class="dropdown-item" asp-controller="Profile" asp-action="Detail">My Profile</a>
-                                        </li>
-                                        @if (User.IsInRole("Admin"))
-                                        {
-                                            <li role="separator" class="dropdown-divider"></li>
-                                            <li class="dropdown-header">Admin</li>
-                                            <li>
-                                                <a class="dropdown-item" asp-controller="Forum" asp-action="Create">Create Category</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" asp-controller="Admin" asp-action="ListUsers">View Users</a>
-                                            </li>
-
-                                        }
-                                    </ul>
-                                </li>
-                            }
-                            @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                            {
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Manage
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin") || User.IsInRole("Mod"))
-                                        {
-                                            <li>
-                                                <a class="dropdown-item" asp-controller="Admin" asp-action="ListUsers">View Users</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" asp-controller="Admin" asp-action="CreateRole">Create role</a>
-                                            </li>
-                                        }
-                                        <li>
-                                            <a class="dropdown-item" asp-controller="Admin" asp-action="ListRoles">Roles</a>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                            }
-
-                        </ul>
-                        <ul class="nav navbar-nav ml-auto">
-                            <partial name="_LoginPartial.cshtml" />
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
-        <footer class="border-top border-dark footer text-muted">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow">
             <div class="container">
-                &copy; 2021 - Collectors Forum
+                <a class="navbar-brand navLogo" asp-controller="Home" asp-action="Index"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Forum" asp-action="Index">Categories</a>
+                        </li>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <li class="dropdown">
+                                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Settings
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li role="separator" class="dropdown-divider"></li>
+                                    <li class="dropdown-header">Profile</li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Profile" asp-action="Detail">My Profile</a>
+                                    </li>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li role="separator" class="dropdown-divider"></li>
+                                        <li class="dropdown-header">Admin</li>
+                                        <li>
+                                            <a class="dropdown-item" asp-controller="Forum" asp-action="Create">Create Category</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-controller="Admin" asp-action="ListUsers">View Users</a>
+                                        </li>
+
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Manage
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin") || User.IsInRole("Mod"))
+                                    {
+                                        <li>
+                                            <a class="dropdown-item" asp-controller="Admin" asp-action="ListUsers">View Users</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-controller="Admin" asp-action="CreateRole">Create role</a>
+                                        </li>
+                                    }
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Admin" asp-action="ListRoles">Roles</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="nav navbar-nav ml-auto">
+                        <partial name="_LoginPartial.cshtml" />
+                    </ul>
+                </div>
             </div>
-        </footer>
-    
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-5">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top border-dark footer text-muted">
+        <div class="container">
+            &copy; 2021 - Collectors Forum
+        </div>
+    </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

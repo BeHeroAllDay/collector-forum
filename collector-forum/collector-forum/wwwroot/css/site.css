@@ -7,43 +7,111 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+
 .navLogo {
     background-image: url("/images/app-logo.png");
     background-size: 120px;
     background-repeat: no-repeat;
     background-position: center;
     width: 120px;
-    height: 25px;
+    height: 50px;
     padding-right: 10px;
+    margin-left: -10px;
     margin-right: 10px;
 }
 
-.homeSearch:focus {
-    -webkit-box-shadow: none;
-    box-shadow: none;
+.navbar li {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.navbar button {
+    font-weight: bold;
+}
+
+.frontPageSplash {
+    background-image: url("../images/theme/front-splash.png");
+    background-attachment: local;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: cover;
+    position: relative;
+}
+
+.frontPageLearn {
+    font-family: 'Roboto';
+    padding: 20px 20px 20px 20px;
+    height: 400px;
+}
+
+/*.sectionDescription {
+    color: #EEE;
+}*/
+
+.frontPageHeading {
+    font-size: 3.2em;
+    margin: 16px 0;
+}
+
+.frontPageSubHeading {
+    font-size: 20px;
+}
+
+.frontPageTopContainer {
+    padding: 40px 80px 42px 40px;
+    border: 1px solid #999;
+    background-color: #2569D5;
+    font-family: 'Roboto';
+}
+
+.frontPageContent {
+    position:relative;
+    margin-top: 50px;
+}
+
+#latestPosts {
+    padding: 10px;
+}
+
+.categories {
+    margin-top: 20px;
 }
 
 .homeSearch {
-    float: right;
-    display: block;
+    width: 100%;
+    background: rgba(85,85,85,0.7);
+    color: white;
+    padding: 8px;
+    border: 0px;
+    height: 75px;
+    margin-top: 125px;
+    margin-left: 16px;
+    font-size: 40px;
+    font-family: 'Roboto Mono';
+    font-weight: bold;
+    transition: ease-in 0.2s;
+    cursor: pointer;
 }
 
-.btnsearch {
-    float: right;
-    height: 30px;
-    width: 80px;
-    padding: 0px;
-    text-align: center;
-    vertical-align: middle;
-    display: inline-block;
-    margin-left: 5px;
+.homeSearch:focus {
+    border: none !important;
+    outline: none !important;
+    transition: ease-in 0.2s;
+    color: #03A9F4;
+    background-color: rgba(0,0,0,0.7);
+    box-shadow: 0 5px 4px -6px #000;
+    cursor: auto;
 }
 
+.homeSearch::-webkit-input-placeholder {
+    color: #999;
+}
 
 /* Provide sufficient contrast against white background */
 a {
     color: #0366d6;
 }
+
 
 .btn-primary {
   color: #fff;
@@ -86,12 +154,17 @@ html {
     border-top: 1px solid #343a40;
 }
 
+.table-hover tbody tr:hover {
+    color: #212529;
+    background-color: rgba(147, 147, 147, 0.5);
+}
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -115,7 +188,7 @@ body:after {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.1;
+    opacity: 0.2;
     z-index: -1;
 }
 
@@ -131,24 +204,63 @@ body:after {
     padding: 20px;
 }
 
+.card {
+    background-color: rgba( 52, 58, 64, 0.8);
+    color: #fff;
+}
+
+#manage {
+    padding-top: 8.5px;
+}
+
+
+/* TABLES */
+
+.rolesTable {
+    margin-top: 20px;
+}
+
+.listUsers {
+    margin-top: 20px;
+}
+
+.createRole {
+    margin-top: 20px;
+}
+
+#latestPostsTable {
+    margin-top: 15px;
+}
 
 /* SOME SHIET*/
+
 .form-control:focus {
     border-color: inherit;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
 
+.form-control::-webkit-input-placeholder {
+    color: #fff;
+}
+
+
 #tologin {
-   float: right;
-   margin: 0px 20px 0px 0px;
-   padding: 20px 0px 0px 0px;
+    float: right;
+    margin: 0px 20px 0px 0px;
+    padding: 20px 0px 0px 0px;
+    color: #000000;
 }
 
 #toregister {
     align-items: center;
     margin: auto;
     padding: 20px 20px 5px 20px;
+}
+
+
+#toregister a {
+    color: #000000;
 }
 
 #remember {
@@ -161,8 +273,8 @@ body:after {
     margin-right: auto;
     display: block;
     width: 80%;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 #logbutt {
@@ -174,40 +286,38 @@ body:after {
 
 .text-center
 {
-    padding: 20px 20px;
+    padding: 0px 20px 10px 20px;
 }
 
-.email-icon {
-    position: absolute;
-    margin: -60px 0px 0px 50px;
-    font-size: 20px;
-    color: #0069d9;
-}
 
-#password-icon {
-    position: absolute;
-    margin: -60px 10px 0px 51px;
-    font-size: 20px;
-    color: #0069d9;
+#regerror {
+    text-align: justify;
+    justify-items:center;
 }
 
 /* Pola w formularzach - pewnie do zmiany */
 
-#log{
+.form-group .err{
+    padding-left: 20px;
+}
+
+#log {
     border: unset;
-    border-bottom: 1px solid #343a40;
+    border-bottom: 1px solid #fff;
     border-radius: unset;
+    background-color: inherit;
     color: inherit;
     display: block;
-    padding: 5px 0px 5px 50px;
+    padding: 5px 0px 5px 5px;
     margin: auto;
     width: 80%;
 }
 
 #reg {
     border: unset;
-    border-bottom: 1px solid #343a40;
+    border-bottom: 1px solid #fff;
     border-radius: unset;
+    background-color: inherit;
     color: inherit;
     display: block;
     padding: 5px 0px 5px 5px;

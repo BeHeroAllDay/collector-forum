@@ -12,8 +12,8 @@
 <h1>List of all users</h1>
 
 @if (Model.Any())
-{
-    <table class="table">
+{<div class="table-responsive-xl">
+    <table class="table table-hover listUsers">
         <tr style="font-size: 20px;">
             <th scope="col">ID</th>
             <th scope="col">Nickname</th>
@@ -34,7 +34,7 @@
                             <a class="btn btn-success" asp-controller="Admin" asp-action="EditUser" asp-route-id="@user.Id">Edit</a>
                             <button type="submit" class="btn btn-danger"
                                     onclick="return confirm('Are you sure you want to delete user : @user.Nickname')">
-                            Delete
+                                Delete
                             </button>
                         </form>
                     </div>
@@ -42,6 +42,7 @@
             </tr>
         }
     </table>
+</div>
 }
 else
 {

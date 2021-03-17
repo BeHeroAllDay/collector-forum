@@ -14,18 +14,18 @@
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group">
             <input asp-for="Input.Email" class="form-control" id="log" placeholder="Email" />
-            <span asp-validation-for="Input.Email" class="text-danger text-center"></span>
-            <div class="email-icon">
+            <span asp-validation-for="Input.Email" id="logerror" class="text-danger text-center"></span>
+            @*<div class="email-icon">
                 <i class="fas fa-envelope"></i>
-            </div>
+            </div>*@
         </div>
         <div class="form-group">
-            <input asp-for="Input.Password" class="form-control" id="log" placeholder="Password" />
-            <span asp-validation-for="Input.Password" class="text-danger text-center"></span>
+            <input asp-for="Input.Password" class="form-control" id="log" placeholder="Password"/>
+            <span asp-validation-for="Input.Password" id="logerror" class="text-danger text-center" ></span>
             @*<a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>*@
-            <div id="password-icon">
+            @*<div id="password-icon">
                 <i class="fas fa-lock"></i>
-            </div>
+            </div>*@
             <div class="checkbox" id="remember">
                 <label asp-for="Input.RememberMe">
                     <input asp-for="Input.RememberMe" />

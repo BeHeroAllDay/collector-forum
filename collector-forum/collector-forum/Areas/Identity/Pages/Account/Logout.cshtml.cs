@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using collector_forum.Controllers;
 
 namespace collector_forum.Areas.Identity.Pages.Account
 {
@@ -26,7 +27,6 @@ namespace collector_forum.Areas.Identity.Pages.Account
         public void OnGet()
         {
         }
-
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
             await _signInManager.SignOutAsync();
