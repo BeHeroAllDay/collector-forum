@@ -38,9 +38,13 @@ namespace collector_forum.Controllers
                 AuthorName = post.User.Nickname,
                 AuthorImageUrl = post.User.ProfileImageUrl,
                 AuthorRating = post.User.Rating,
+                IsAuthorAdmin = IsAuthorAdmin(post.User),
+                IsAuthorMod = IsAuthorMod(post.User),
                 Created = post.Created,
                 PostContent = post.Content,
-                Replies = replies
+                Replies = replies,
+                CategoryId = post.Category.Id,
+                CategoryName = post.Category.Title
             };
 
             return View(model);
@@ -76,6 +80,18 @@ namespace collector_forum.Controllers
             return RedirectToAction("Index", "Post", new { id = post.Id });
         }
 
+        private bool IsAuthorAdmin(ApplicationUser user)
+        {
+            return _userManager.GetRolesAsync(user)
+                .Result.Contains("Admin");
+        }
+
+        private bool IsAuthorMod(ApplicationUser user)
+        {
+            return _userManager.GetRolesAsync(user)
+                .Result.Contains("Mod");
+        }
+
         private Post BuildPost(NewPostModel model, ApplicationUser user)
         {
             var category = _categoryService.GetById(model.CategoryId);
@@ -100,7 +116,9 @@ namespace collector_forum.Controllers
                 AuthorImageUrl = reply.User.ProfileImageUrl,
                 AuthorRating = reply.User.Rating,
                 Created = reply.Created,
-                ReplyContent = reply.Content
+                ReplyContent = reply.Content,
+                IsAuthorAdmin = IsAuthorAdmin(reply.User),
+                IsAuthorMod = IsAuthorMod(reply.User)
             });
         }
     }

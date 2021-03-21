@@ -21,32 +21,68 @@ a.navbar-brand {
 }
 
 .navbar li {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 20px;
+    font-family: 'Roboto';
 }
 
 .navbar button {
-    font-weight: bold;
+    font-size: 20px;
 }
 
-.frontPageSplash {
+
+/* OBRAZEK NA GŁÓWNEJ */
+
+.frontPageImg {  
     background-image: url("../images/theme/front-splash.png");
     background-attachment: local;
     background-repeat: no-repeat;
-    background-position: left;
+    background-position: right;
     background-size: cover;
-    position: relative;
 }
+
+ /* - - - - - - - - - - */
 
 .frontPageLearn {
     font-family: 'Roboto';
     padding: 20px 20px 20px 20px;
-    height: 400px;
+    height: 300px;
 }
 
-/*.sectionDescription {
-    color: #EEE;
-}*/
+.heading {
+    color: black;
+    mask-image: none;
+    -webkit-mask-image: none;
+    opacity: 1;
+}
+
+.sectionHeader {
+    background-color: rgba(0,0,0,0.5);
+    padding: 10px 0px 25px 25px;
+}
+
+.sectionHeading {
+    color: white;
+    font-size: 1.3em;
+    font-family: 'Roboto';
+    padding: 16px 0px 16px 0px;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.sectionInfo {
+    height: 400px;
+    background-color: white;
+}
+
+.sectionDescription {
+    color: #eee;
+    width: 100%;
+    font-size: 1em;
+}
+
+
 
 .frontPageHeading {
     font-size: 3.2em;
@@ -65,16 +101,270 @@ a.navbar-brand {
 }
 
 .frontPageContent {
-    position:relative;
-    margin-top: 50px;
-}
-
-#latestPosts {
-    padding: 10px;
+    background-color: rgba(52,58,64,0.9);
+    padding: 15px;
 }
 
 .categories {
+    background-color: rgba(52,58,64,0.9);
+    padding: 15px;
+}
+
+.forumLogo {
+    border-radius: 5px;
+    float: left;
+    margin-right: 20px;
+    height: 45px;
+    width: 45px;
+    background-color: #ddd;
+    border: 1px solid #555;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.forumPostCount {
+    color: #888;
+    font-family: 'Roboto Mono';
+    font-size: 0.9em;
+}
+
+.forumMemberCount {
+    color: #888;
+    font-family: 'Roboto Mono';
+    font-size: 0.9em;
+}
+
+.forumIndexContent {
+    padding-bottom: 60px;
+    background-color: rgba(52,58,64,0.9);
+}
+
+#categoryIndexTable {
+    color: #cccc;
+    margin-top: 15px !important;
+}
+
+#categoryIndexTable tr:hover {
+    color: #cccc;
+}
+
+.categoryData {
+    display: inline-block;
+}
+
+.categoryTitle {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.categorySubTitle {
+    color: white;
+    font-family: 'Robot Mono';
+    font-size: 0.8em;
+}
+
+.categoryDescription {
+    color: #555;
+    font-family: 'Roboto';
+}
+
+.headersTable {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: rgba(100,110,203, 1);
+    margin: 10px 10px 10px 10px !important;
+}
+
+
+#toreg {
+    color: yellowgreen;
+    font-weight: bold;
+}
+
+/* POST PAGE */
+
+.noPosts {
+    text-align: center;
+    padding-top: 30px;
+    font-family: 'Roboto Mono';
+    text-shadow: 2px 2px 3px rgba(52,58,64,0.9);
+}
+
+.createPostSection {
+    padding: 24px;
+    background-color: rgba(52,58,64,0.9);
+}
+
+.postTitle {
+    font-weight: bold;
+}
+
+.postSubTitle {
+    color: #888;
+    font-family: 'Roboto Mono';
+    font-size: 0.8em;
+}
+
+.postData {
+    display: inline-block;
+}
+
+.postDate {
+    color: #888;
+    font-family: 'Roboto Mono';
+    font-size: 0.8em;
+}
+
+.postLogo {
+    display: inline-block;
+    border-radius: 10px;
+    float: left;
+    margin-right: 20px;
+    height: 45px;
+    width: 45px;
+    background-color: #ddd;
+    border: 1px solid #555;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.postAuthorImage {
+    height: 80px;
+    width: 80px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.postAuthorContainer {
+    padding: 12px;
+    color: #ddd;
+    font-family: 'Roboto';
+    width: 190px;
+}
+
+.postIndexTitle {
+    font-size: 1.4em;
+    padding: 5px;
+}
+
+.postContentContainer {
+    font-family: 'Roboto';
+    color: white;
+    padding: 22px;
+    border-left: 1px solid #ddd;
+}
+
+.postAuthorRating {
+    font-size: 0.9em;
+    color: #ddd;
+    font-family: 'Roboto Mono';
+}
+
+#postIndexContent {
+    background-color: rgba(52,58,64,0.9);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3), 0 6px 6px rgba(0,0,0,0.3);
+}
+
+.postHeader {
+    background-color: rgba(52,58,64,0.5);
+    padding: 20px 20px 20px 20px;
+    color: white;
+}
+
+.postHeading {
+    width: 100%;
+}
+
+#headingBtn {
+    float: right;
+}
+
+/* LINKS */
+
+
+.link {
+    color: white !important;
+}
+
+
+/* CUSTOM BUTTONS */
+.btn-back {
+    background-color: #555;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border: solid 1px #1861ac;
+}
+
+.btn-back:hover {
+    background-color: #5C6BC0 !important;
+    transition: ease-in 0.1s;
+}
+
+.btn-newReply {
+    background-color: #5C6BC0 !important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border: solid 1px #343a40;
+}
+
+.btn-newReply:hover {
+    background-color: #555 !important;
+    transition: ease-in 0.1s;
+}
+
+.btn-file {
+    color: white;
+    width: 100%;
+    background-color: #4FC3F7;
+    transition: ease 0.3s;
+    border: solid 1px #343a40;
+}
+
+.btn.file:hover {
+    background-color: #039be5;
+    transition: ease 0.3s;
+}
+
+.btn-newPost {
+    background-color: #5C6BC0 !important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border: solid 1px #343a40;
+}
+
+.btn-newPost:hover {
+    background-color: #555 !important;
+    transition: ease-in 0.1s;
+}
+
+.btn-submitPost {
+    background-color: #00695c !important;
+    color: #fff !important;
+    transition: ease-in 0.1s;
+    border: solid 1px #00897b;
+}
+
+.btn-submitPost:hover {
+    transition: ease-in 0.1s;
+    background-color: #00897b !important;
+    color: #fff !important;
+}
+
+/* - - - - - - - - - - - - -*/
+
+.categories {
     margin-top: 20px;
+    padding: 15px;
+}
+
+.cRoleHeader {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(52,58,64,0.9);
+    color: #c8c8c8 !important;
 }
 
 .homeSearch {
@@ -83,14 +373,12 @@ a.navbar-brand {
     color: white;
     padding: 8px;
     border: 0px;
-    height: 75px;
-    margin-top: 125px;
-    margin-left: 16px;
-    font-size: 40px;
+    height: 2.3em;
+    margin-top: 8px;
+    font-size: 2.1em;
     font-family: 'Roboto Mono';
     font-weight: bold;
     transition: ease-in 0.2s;
-    cursor: pointer;
 }
 
 .homeSearch:focus {
@@ -100,7 +388,6 @@ a.navbar-brand {
     color: #03A9F4;
     background-color: rgba(0,0,0,0.7);
     box-shadow: 0 5px 4px -6px #000;
-    cursor: auto;
 }
 
 .homeSearch::-webkit-input-placeholder {
@@ -109,7 +396,11 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-    color: #0366d6;
+    color: #fff;
+}
+
+a:hover {
+    color: black;
 }
 
 
@@ -126,8 +417,7 @@ a {
 }
 
 
-/* Sticky footer styles
--------------------------------------------------- */
+/* Sticky footer styles */
 html {
   font-size: 14px;
 }
@@ -151,13 +441,13 @@ html {
 .table td, .table th {
     padding: .75rem;
     vertical-align: top;
-    border-top: 1px solid #343a40;
 }
 
 .table-hover tbody tr:hover {
-    color: #212529;
-    background-color: rgba(147, 147, 147, 0.5);
+    color: white;
+    background-color: rgba(255,255,255,0.1);
 }
+
 
 
 /* Sticky footer styles
@@ -172,6 +462,9 @@ body {
     margin-bottom: 60px;
     background: #eee;
     min-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 
 body:after {
@@ -188,8 +481,8 @@ body:after {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.2;
-    z-index: -1;
+    opacity: 0.4;
+    z-index: -2;
 }
 
 .footer {
@@ -200,12 +493,17 @@ body:after {
     line-height: 60px; /* Vertically center the text there */
 }
 
+.footer .container {
+    font-weight: 600;
+}
+
 .card-content {
     padding: 20px;
 }
 
 .card {
-    background-color: rgba( 52, 58, 64, 0.8);
+    margin-top: 25px;
+    background-color: rgba(52,58,64,0.8);
     color: #fff;
 }
 
@@ -213,15 +511,29 @@ body:after {
     padding-top: 8.5px;
 }
 
+.logout {
+    font-family: 'Roboto';
+}
+
 
 /* TABLES */
 
-.rolesTable {
+.Lists {
+    background-color: rgba(52,58,64,0.9);
+    padding: 15px;
     margin-top: 20px;
+    color: #c8c8c8 !important;
 }
 
-.listUsers {
+
+.rolesList {
     margin-top: 20px;
+    color: white;
+}
+
+.usersList {
+    margin-top: 20px;
+    color: white;
 }
 
 .createRole {
@@ -232,8 +544,15 @@ body:after {
     margin-top: 15px;
 }
 
-/* SOME SHIET*/
+/*.table td a {
+    font-family: 'Roboto';
+    font-weight: bold;
+}*/
 
+
+
+
+/* SOME SHIET*/
 .form-control:focus {
     border-color: inherit;
     -webkit-box-shadow: none;
@@ -242,6 +561,16 @@ body:after {
 
 .form-control::-webkit-input-placeholder {
     color: #fff;
+}
+
+.isAdmin {
+    color: #ff0000;
+    text-shadow: 2px 2px 2px black;
+}
+
+.isMod {
+    color: goldenrod;
+    text-shadow: 2px 2px 2px black;
 }
 
 
@@ -324,4 +653,3 @@ body:after {
     margin: auto;
     width: 80%;
 }
-

@@ -9,52 +9,55 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>List of all users</h1>
+<div class="Lists">
 
-@if (Model.Any())
-{<div class="table-responsive-xl">
-    <table class="table table-hover listUsers">
-        <tr style="font-size: 20px;">
-            <th scope="col">ID</th>
-            <th scope="col">Nickname</th>
-            <th scope="col">Email</th>
-            <th scope="col" class="align-middle">Joined</th>
-            <th scope="col" class="text-center align-middle">Action</th>
-        </tr>
-        @foreach (var user in Model)
-        {
-            <tr style="font-size: 16px;">
-                <td class="align-middle">@user.Id</td>
-                <td class="align-middle">@user.Nickname</td>
-                <td class="align-middle">@user.Email</td>
-                <td class="align-middle">@user.RegistrationDate.ToString("dd.MM.yyyy")</td>
-                <td class="text-center align-middle">
-                    <div btn-group align-middle>
-                        <form asp-action="DeleteUser" asp-route-id="@user.Id" method="post">
-                            <a class="btn btn-success" asp-controller="Admin" asp-action="EditUser" asp-route-id="@user.Id">Edit</a>
-                            <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Are you sure you want to delete user : @user.Nickname')">
-                                Delete
-                            </button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-        }
-    </table>
-</div>
-}
-else
-{
-    <hr />
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h5 style="padding: 40px 0px 0px 0px; text-align: center;">There is no accounts created yet</h5>
-            <div class="col text-center">
-                <a asp-controller="Home" asp-action="Index">
-                    Return to main page
-                </a>
+    <h1 class="headersTable">List of all users</h1>
+
+    @if (Model.Any())
+    {<div class="table-responsive-xl">
+            <table class="table table-hover usersList">
+                <tr style="font-size: 20px; marker:none;">
+                    <th scope="col">ID</th>
+                    <th scope="col">Nickname</th>
+                    <th scope="col">Email</th>
+                    <th scope="col" class="align-middle">Joined</th>
+                    <th scope="col" class="text-center align-middle">Action</th>
+                </tr>
+                @foreach (var user in Model)
+                {
+                    <tr style="font-size: 16px;">
+                        <td class="align-middle">@user.Id</td>
+                        <td class="align-middle">@user.Nickname</td>
+                        <td class="align-middle">@user.Email</td>
+                        <td class="align-middle">@user.RegistrationDate.ToString("dd.MM.yyyy")</td>
+                        <td class="text-center align-middle">
+                            <div btn-group align-middle>
+                                <form asp-action="DeleteUser" asp-route-id="@user.Id" method="post">
+                                    <a class="btn btn-success" asp-controller="Admin" asp-action="EditUser" asp-route-id="@user.Id">Edit</a>
+                                    <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('Are you sure you want to delete user : @user.Nickname')">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+    else
+    {
+        <hr />
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h5 style="padding: 40px 0px 0px 0px; text-align: center;">There is no accounts created yet</h5>
+                <div class="col text-center">
+                    <a asp-controller="Home" asp-action="Index">
+                        Return to main page
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
+</div>

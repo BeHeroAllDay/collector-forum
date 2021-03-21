@@ -13,7 +13,11 @@ namespace collector_forum.Models.Post
         public string AuthorImageUrl { get; set; }
         public int AuthorRating { get; set; }
         public DateTime Created { get; set; }
+        public bool IsAuthorAdmin { get; set; }
+        public bool IsAuthorMod { get; set; }
         public string PostContent { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
 
         public IEnumerable<PostReplyModel> Replies { get; set; }
     }

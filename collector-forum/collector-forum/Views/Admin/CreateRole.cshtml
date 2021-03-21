@@ -5,26 +5,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create role</h1>
+<div class="cRoleHeader">
+    <h1>Create role</h1>
 
-<div class="row createRole">
-    <div class="col-md-4">
-        <form asp-action="CreateRole">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="RoleName" class="control-label">Role Name</label>
-                <input asp-for="RoleName" class="form-control" />
-                <span asp-validation-for="RoleName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="row createRole">
+        <div class="col-md-4">
+            <form asp-action="CreateRole">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="RoleName" class="control-label" style="font-size:18px;">Role Name</label>
+                    <input asp-for="RoleName" class="form-control" />
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-area="" asp-controller="Admin" asp-action="ListRoles">Back to List</a>
+    <div>
+        <a class="link" asp-controller="Admin" asp-action="ListRoles">Back to List</a>
+    </div>
 </div>
 
 @section Scripts {

@@ -7,5 +7,6 @@ namespace collector_forum.Models.Category
     {
         public CategoryListingModel Category { get; set; }
         public IEnumerable<PostListingModel> Posts { get; set; }
+        public string SearchQuery { get; set; }
     }
 }
