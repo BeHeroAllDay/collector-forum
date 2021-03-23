@@ -3,6 +3,8 @@ using collector_forum.Data.Models;
 using collector_forum.Models.Category;
 using collector_forum.Models.Post;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace collector_forum.Controllers
@@ -10,9 +12,11 @@ namespace collector_forum.Controllers
     public class ForumController : Controller
     {
         private readonly ICategory _categoryService;
-        public ForumController(ICategory categoryService)
+        private readonly IPost _postService;
+        public ForumController(ICategory categoryService, IPost postService)
         {
             _categoryService = categoryService;
+            _postService = postService;
         }
 
         public IActionResult Index()
@@ -33,10 +37,12 @@ namespace collector_forum.Controllers
             return View(model);
         }
 
-        public IActionResult Topic(int id)
+        public IActionResult Topic(int id, string searchQuery)
         {
             var category = _categoryService.GetById(id);
-            var posts = category.Posts;
+            var posts = new List<Post>();
+
+            posts = _postService.GetFilteredPosts(category, searchQuery).ToList();
 
             var postListings = posts.Select(post => new PostListingModel
             {
@@ -57,6 +63,12 @@ namespace collector_forum.Controllers
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Search(int id, string searchQuery)
+        {
+            return RedirectToAction("Topic", new { id, searchQuery });
         }
 
         private CategoryListingModel BuildCategoryListing(Post post)

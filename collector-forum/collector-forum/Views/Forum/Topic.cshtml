@@ -21,8 +21,8 @@
             <form asp-controller="Forum" asp-action="Search" method="post">
                 <div class="searchForm">
                     <input asp-for="SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)" />
-                    <button type="submit" class="btn buttonSearch">
-                        <i class="material-icons">search</i>
+                    <button type="submit" class="btn btn-forumSearch">
+                        <i class="fas fa-search"></i>
                     </button>
                 </div>
                 <input asp-for="Category.Id" name="id" type="hidden" />
@@ -50,7 +50,7 @@
     <div class="row forumIndexContent">
         @if (Model.Posts.Any())
         {
-            <table class="table table-hover table-bordered" id="forumIdenxTable">
+            <table class="table table-hover" id="forumIndexTable">
                 <tbody>
                     @foreach (var post in Model.Posts)
                     {
@@ -66,12 +66,14 @@
                                                 @post.AuthorName
                                             </a>
                                         </span>
-                                        (@post.AuthorRating)
+                                        <span class="postAuthorRating">
+                                            (@post.AuthorRating)
+                                        </span>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <div class="forumPostConent">
+                                <div class="forumPostCount">
                                     Replies: @post.RepliesCount
                                 </div>
                             </td>
@@ -86,7 +88,7 @@
         else
         {
             <div class="noPosts">
-                <i class="material-icons md-72">question_answer</i>
+                <i class="fas fa-comments"></i>
                 <h3>
                     It looks like there are no post to be found.
                     Why not

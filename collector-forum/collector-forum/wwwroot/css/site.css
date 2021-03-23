@@ -58,7 +58,7 @@ a.navbar-brand {
 
 .sectionHeader {
     background-color: rgba(0,0,0,0.5);
-    padding: 10px 0px 25px 25px;
+    padding: 10px 25px 25px 25px;
 }
 
 .sectionHeading {
@@ -124,7 +124,7 @@ a.navbar-brand {
 }
 
 .forumPostCount {
-    color: #888;
+    color: #999;
     font-family: 'Roboto Mono';
     font-size: 0.9em;
 }
@@ -136,7 +136,7 @@ a.navbar-brand {
 }
 
 .forumIndexContent {
-    padding-bottom: 60px;
+    padding: 15px 15px 15px 15px;
     background-color: rgba(52,58,64,0.9);
 }
 
@@ -156,6 +156,7 @@ a.navbar-brand {
 .categoryTitle {
     font-family: 'Roboto';
     font-weight: bold;
+
     font-size: 1.1em;
 }
 
@@ -202,7 +203,7 @@ a.navbar-brand {
 }
 
 .postSubTitle {
-    color: #888;
+    color: #999;
     font-family: 'Roboto Mono';
     font-size: 0.8em;
 }
@@ -212,7 +213,12 @@ a.navbar-brand {
 }
 
 .postDate {
-    color: #888;
+    color: #999;
+    font-family: 'Roboto Mono';
+    font-size: 0.8em;
+}
+
+.postAuthor {
     font-family: 'Roboto Mono';
     font-size: 0.8em;
 }
@@ -222,8 +228,8 @@ a.navbar-brand {
     border-radius: 10px;
     float: left;
     margin-right: 20px;
-    height: 45px;
-    width: 45px;
+    height: 50px;
+    width: 50px;
     background-color: #ddd;
     border: 1px solid #555;
     background-repeat: no-repeat;
@@ -258,7 +264,7 @@ a.navbar-brand {
 }
 
 .postAuthorRating {
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: #ddd;
     font-family: 'Roboto Mono';
 }
@@ -353,7 +359,44 @@ a.navbar-brand {
     color: #fff !important;
 }
 
+.btn-forumSearch {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    font-size: 30px;
+    color: black;
+    vertical-align: central;
+}
+
+.btn-forumSearch:hover {
+    transition: ease-in 0.1s;
+}
+
 /* - - - - - - - - - - - - -*/
+
+/* TOPIC PAGE */
+
+.searchBar {
+    padding: 3px 5px 2px 12px;
+    margin: 8px;
+    background-color: #333;
+    width: 15%;
+    transition: ease .3s;
+    border: none;
+    color: white;
+}
+
+.searchBar:focus {
+    color: white;
+    width: 60%;
+    background-color: #333;
+}
+
+
+
+/* - - - - - - */
+
 
 .categories {
     margin-top: 20px;
@@ -391,7 +434,7 @@ a.navbar-brand {
 }
 
 .homeSearch::-webkit-input-placeholder {
-    color: #999;
+    color: black;
 }
 
 /* Provide sufficient contrast against white background */
@@ -400,7 +443,7 @@ a {
 }
 
 a:hover {
-    color: black;
+    color: #fff;
 }
 
 
@@ -544,13 +587,6 @@ body:after {
     margin-top: 15px;
 }
 
-/*.table td a {
-    font-family: 'Roboto';
-    font-weight: bold;
-}*/
-
-
-
 
 /* SOME SHIET*/
 .form-control:focus {
@@ -578,18 +614,12 @@ body:after {
     float: right;
     margin: 0px 20px 0px 0px;
     padding: 20px 0px 0px 0px;
-    color: #000000;
 }
 
 #toregister {
     align-items: center;
     margin: auto;
     padding: 20px 20px 5px 20px;
-}
-
-
-#toregister a {
-    color: #000000;
 }
 
 #remember {

@@ -8,7 +8,7 @@ namespace collector_forum.Data
     {
         Post GetById(int id);
         IEnumerable<Post> GetAll();
-        IEnumerable<Post> GetFilteredPosts(string searchQuery);
+        IEnumerable<Post> GetFilteredPosts(Category category, string searchQuery);
         IEnumerable<Post> GetPostsByCategory(int id);
         IEnumerable<Post> GetLatestPosts(int n);
 
