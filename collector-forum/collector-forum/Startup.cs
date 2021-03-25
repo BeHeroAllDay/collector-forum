@@ -21,7 +21,6 @@ namespace collector_forum
 
         public IConfiguration Configuration { get; }
 
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -47,6 +46,9 @@ namespace collector_forum
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<ICategory, CategoryService>();
             services.AddScoped<IPost, PostService>();
+            services.AddScoped<IUpload, UploadService>();
+            services.AddScoped<IApplicationUser, ApplicationUserService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +64,7 @@ namespace collector_forum
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

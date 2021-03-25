@@ -350,7 +350,7 @@ namespace collector_forum.Controllers
             {
                 Id = user.Id,
                 Email = user.Email,
-                Nickname = user.Nickname,
+                UserName = user.UserName,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Claims = userClaims.Select(c => c.Value).ToList(),
@@ -373,7 +373,7 @@ namespace collector_forum.Controllers
             else
             {
                 user.Email = model.Email;
-                user.Nickname = model.Nickname;
+                user.UserName = model.UserName;
                 user.FirstName = model.FirstName;
                 model.LastName = model.LastName;
 

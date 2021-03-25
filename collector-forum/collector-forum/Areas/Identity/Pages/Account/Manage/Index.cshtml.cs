@@ -38,8 +38,13 @@ namespace collector_forum.Areas.Identity.Pages.Account.Manage
             [Required]
             [StringLength(25, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
             [DataType(DataType.Text)]
-            [Display(Name = "Nickname")]
-            public string Nickname { get; set; }
+            [Display(Name = "User Name")]
+            public string UserName { get; set; }
+
+            [Required]
+            [EmailAddress]
+            [Display(Name = "Email")]
+            public string Email { get; set; }
 
             [Required]
             [DataType(DataType.Text)]
@@ -67,7 +72,8 @@ namespace collector_forum.Areas.Identity.Pages.Account.Manage
             Input = new InputModel
             {
                 PhoneNumber = phoneNumber,
-                Nickname = user.Nickname,
+                UserName = user.UserName,
+                Email = user.Email,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 DOB = user.DOB,
@@ -111,9 +117,14 @@ namespace collector_forum.Areas.Identity.Pages.Account.Manage
                 }
             }
 
-            if (Input.Nickname != user.Nickname)
+            if (Input.UserName != user.UserName)
             {
-                user.Nickname = Input.Nickname;
+                user.UserName = Input.UserName;
+            }
+
+            if (Input.Email != user.Email)
+            {
+                user.Email = Input.Email;
             }
 
             if (Input.FirstName != user.FirstName)

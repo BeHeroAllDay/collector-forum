@@ -35,7 +35,7 @@ namespace collector_forum.Controllers
                 Id = post.Id,
                 Title = post.Title,
                 AuthorId = post.User.Id,
-                AuthorName = post.User.Nickname,
+                AuthorName = post.User.UserName,
                 AuthorImageUrl = post.User.ProfileImageUrl,
                 AuthorRating = post.User.Rating,
                 IsAuthorAdmin = IsAuthorAdmin(post.User),
@@ -111,7 +111,7 @@ namespace collector_forum.Controllers
             return replies.Select(reply => new PostReplyModel
             {
                 Id = reply.Id,
-                AuthorName = reply.User.Nickname,
+                AuthorName = reply.User.UserName,
                 AuthorId = reply.User.Id,
                 AuthorImageUrl = reply.User.ProfileImageUrl,
                 AuthorRating = reply.User.Rating,

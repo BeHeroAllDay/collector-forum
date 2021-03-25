@@ -37,7 +37,7 @@ namespace collector_forum.Controllers
                 Id = post.Id,
                 Title = post.Title,
                 AuthorId = post.User.Id,
-                AuthorName = post.User.Nickname,
+                AuthorName = post.User.UserName,
                 AuthorRating = post.User.Rating,
                 DatePosted = post.Created.ToString(),
                 RepliesCount = post.Replies.Count(),

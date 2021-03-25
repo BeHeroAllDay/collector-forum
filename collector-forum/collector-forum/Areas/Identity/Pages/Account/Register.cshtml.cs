@@ -49,8 +49,8 @@ namespace collector_forum.Areas.Identity.Pages.Account
             [Required]
             [StringLength(25, ErrorMessage = "{0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
             [DataType(DataType.Text)]
-            [Display(Name = "Nickname")]
-            public string Nickname { get; set; }
+            [Display(Name = "User Name")]
+            public string UserName { get; set; }
 
             [Required]
             [RegularExpression(@"^[A-Z]+[a-zA-Z]*$", ErrorMessage = "First Name cannot be number!")]
@@ -99,10 +99,9 @@ namespace collector_forum.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser {
-                    UserName = Input.Email,
+                    UserName = Input.UserName,
                     Email = Input.Email,
                     RegistrationDate = DateTime.Now,
-                    Nickname = Input.Nickname,
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
                     DOB = Input.DOB,
