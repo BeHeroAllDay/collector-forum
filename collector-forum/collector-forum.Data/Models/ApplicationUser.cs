@@ -23,7 +23,6 @@ namespace collector_forum.Data.Models
         public DateTime DOB { get; set; }
         public DateTime RegistrationDate { get; set; }
         public int Rating { get; set; }
-        public string ProfileImageUrl { get; set; }
         public bool IsActive { get; set; }
     }
 }

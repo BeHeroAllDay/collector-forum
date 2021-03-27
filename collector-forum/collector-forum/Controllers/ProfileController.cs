@@ -1,8 +1,10 @@
 ﻿using collector_forum.Data;
 using collector_forum.Data.Models;
 using collector_forum.Models.ApplicationUser;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace collector_forum.Controllers
 {
@@ -33,7 +35,6 @@ namespace collector_forum.Controllers
                 UserName = user.UserName,
                 UserRating = user.Rating.ToString(),
                 Email = user.Email,
-                ProfileImageUrl = user.ProfileImageUrl,
                 MemberSince = user.RegistrationDate,
                 IsAdmin = userRoles.Contains("Admin")
             };

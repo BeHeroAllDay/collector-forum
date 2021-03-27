@@ -25,8 +25,7 @@
 
     <div class="row" id="postIndexContent">
         <div class="col-md-3 postAuthorContainer">
-            <div class="postAuthorImage" style="background-image: url(@Model.AuthorImageUrl);"></div>
-            <a asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">
+            <a class="userName" asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">
                 @Model.AuthorName
             </a> <br />
             <span class="postData">@Model.Created</span>
@@ -64,8 +63,7 @@
         {
             <div class="row replyContent">
                 <div class="col-md-3 replyAuthorContainer">
-                    <div class="postAuthorImage" style="background-image: url(@reply.AuthorImageUrl)"></div>
-                    <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
+                    <a class="userName" asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
                         @reply.AuthorName
                     </a>
                     @if (reply.IsAuthorAdmin)
