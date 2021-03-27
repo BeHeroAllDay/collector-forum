@@ -2,10 +2,12 @@
 using collector_forum.Data.Models;
 using collector_forum.Models.Category;
 using collector_forum.Models.Post;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace collector_forum.Controllers
 {
@@ -70,6 +72,27 @@ namespace collector_forum.Controllers
         {
             return RedirectToAction("Topic", new { id, searchQuery });
         }
+
+        public IActionResult Create()
+        {
+            var model = new AddCategoryModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddCategory(AddCategoryModel model)
+        {
+            var category = new Category
+            {
+                Title = model.Title,
+                Description = model.Description,
+                Created = DateTime.Now
+            };
+
+            await _categoryService.Create(category);
+            return RedirectToAction("Index", "Forum");
+        }
+
 
         private CategoryListingModel BuildCategoryListing(Post post)
         {

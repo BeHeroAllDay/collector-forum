@@ -46,7 +46,6 @@ namespace collector_forum
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<ICategory, CategoryService>();
             services.AddScoped<IPost, PostService>();
-            services.AddScoped<IUpload, UploadService>();
             services.AddScoped<IApplicationUser, ApplicationUserService>();
 
         }

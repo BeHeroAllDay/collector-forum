@@ -58,6 +58,11 @@ a.navbar-brand {
 
 
 /* - - - - - - - */
+
+.body-content {
+    margin-top: 15px;
+}
+
 .frontPageLearn {
     font-family: 'Roboto';
     padding: 20px 20px 20px 20px;
@@ -95,7 +100,7 @@ a.navbar-brand {
 .sectionDescription {
     color: #eee;
     width: 100%;
-    font-size: 1em;
+    font-size: 0.9em;
 }
 
 .frontPageHeading {
@@ -209,9 +214,9 @@ a.navbar-brand {
 
 #addPostForm
 {
-    font-weight: bold;
     font-family: 'Roboto';
     font-size: 1.2em;
+    width: 100%;
 }
 
 .createPostSection {
@@ -303,9 +308,56 @@ a.navbar-brand {
     float: right;
 }
 
+
+#replyContent {
+    width: 100%;
+}
+
+#createReply {
+    width: 100%;
+}
+
+.replyBg {
+    background-color: rgba(52,58,64,0.9);
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.replyBg h3 {
+    color: #999;
+}
+
+.replyBg p {
+    color: #eee;
+}
+
+.authorBlock {
+    color: #00897b;
+    font-size: 1.5em;
+}
+
+#replyLabel {
+    color: #00cc43;
+    font-weight: 500;
+    font-family: 'Roboto';
+}
+
+.newPost {
+    background-color: rgba(52,58,64,0.9);
+    color: #eee;
+    padding: 15px;
+    font-weight: 400 !important;
+}
+
+.newPost h1 {
+  color: #00897b;
+}
+
+
+
+
+
 /* LINKS */
-
-
 .link {
     color: white !important;
 }
@@ -336,19 +388,6 @@ a.navbar-brand {
     background-color: rgba(19,161,2,0.7) !important;
     color: black !important;
     transition: ease-in 0.1s;
-}
-
-.btn-file {
-    color: white;
-    width: 100%;
-    background-color: #4FC3F7;
-    transition: ease 0.3s;
-    border: solid 1px #343a40;
-}
-
-.btn.file:hover {
-    background-color: #039be5;
-    transition: ease 0.3s;
 }
 
 .btn-newPost {
@@ -397,16 +436,16 @@ a.navbar-brand {
 .searchBar {
     padding: 3px 5px 2px 12px;
     margin: 8px;
+    font-size: 40px;
     background-color: #333;
-    width: 15%;
+    width: 18%;
     transition: ease .3s;
     border: none;
-    color: white;
 }
 
 .searchBar:focus {
-    color: white;
     width: 60%;
+    color: #757575;
     background-color: #333;
 }
 
@@ -434,7 +473,7 @@ a.navbar-brand {
 }
 
 #userName {
-    color: white;
+    color: #698bfb;
     font-family: 'Roboto';
     font-size: 24px;
 }
@@ -458,7 +497,6 @@ a.navbar-brand {
 .homeSearch {
     width: 100%;
     background: rgba(85,85,85,0.7);
-    color: white !important;
     padding: 8px;
     border: 0px;
     height: 2.3em;
@@ -473,14 +511,14 @@ a.navbar-brand {
     border: none !important;
     outline: none !important;
     transition: ease-in 0.2s;
-    color: #03A9F4;
     background-color: rgba(0,0,0,0.7);
     box-shadow: 0 5px 4px -6px #000;
 }
 
 .homeSearch::-webkit-input-placeholder {
-    color: black;
+    color: #cccc;
 }
+
 
 /* Provide sufficient contrast against white background */
 a {
@@ -640,7 +678,7 @@ body:after {
 }
 
 .form-control::-webkit-input-placeholder {
-    color: #fff;
+    color: black;
 }
 
 .isAdmin {
