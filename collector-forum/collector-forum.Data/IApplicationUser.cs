@@ -11,6 +11,6 @@ namespace collector_forum.Data
     {
         ApplicationUser GetById(string id);
         IEnumerable<ApplicationUser> GetAll();
-        Task IncrementRating(string id, Type type);
+        Task UpdateUserRating(string id, Type type);
     }
 }

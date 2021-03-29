@@ -4,6 +4,7 @@ using collector_forum.Models.ApplicationUser;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace collector_forum.Controllers
@@ -34,6 +35,25 @@ namespace collector_forum.Controllers
                 Email = user.Email,
                 MemberSince = user.RegistrationDate,
                 IsAdmin = userRoles.Contains("Admin")
+            };
+
+            return View(model);
+        }
+
+        public IActionResult Index()
+        {
+            var profiles = _userService.GetAll()
+                .OrderByDescending(user => user.Rating)
+                .Select(u => new ProfileModel
+                {
+                    Email = u.Email,
+                    UserName = u.UserName,
+                    UserRating = u.Rating.ToString(),
+                    MemberSince = u.RegistrationDate
+                });
+            var model = new ProfileListModel
+            {
+                Profiles = profiles
             };
 
             return View(model);

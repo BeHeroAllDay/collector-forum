@@ -15,6 +15,7 @@ namespace collector_forum.Controllers
     {
         private readonly ICategory _categoryService;
         private readonly IPost _postService;
+
         public ForumController(ICategory categoryService, IPost postService)
         {
             _categoryService = categoryService;
@@ -24,16 +25,20 @@ namespace collector_forum.Controllers
         public IActionResult Index()
         {
             var categories = _categoryService.GetAll()
-                .Select(categories => new CategoryListingModel
+                .Select(category => new CategoryListingModel
                 {
-                    Id = categories.Id,
-                    Name = categories.Title,
-                    Description = categories.Description
+                    Id = category.Id,
+                    Name = category.Title,
+                    Description = category.Description,
+                    NumberOfPosts = category.Posts?.Count() ?? 0,
+                    NumberOfUsers = _categoryService.GetActiveUsers(category.Id).Count(),
+                    ImageUrl = category.ImageUrl,
+                    HasRecentPost = _categoryService.HasRecentPost(category.Id)
                 });
 
             var model = new CategoryIndexModel
             {
-                CategoryList = categories
+                CategoryList = categories.OrderBy(c => c.Name)
             };
              
             return View(model);

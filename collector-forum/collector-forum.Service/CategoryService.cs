@@ -1,6 +1,7 @@
 ﻿using collector_forum.Data;
 using collector_forum.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,25 +16,39 @@ namespace collector_forum.Service
             _context = context;
         }
 
-        public Task Create(Category categories)
+        public async Task Create(Category category)
         {
-            throw new System.NotImplementedException();
+            _context.Add(category);
+            await _context.SaveChangesAsync();
+
         }
 
-        public Task Delete(int categoryId)
+        public async Task Delete(int categoryId)
         {
-            throw new System.NotImplementedException();
+            var category = GetById(categoryId);
+            _context.Remove(category);
+            await _context.SaveChangesAsync();
+        }
+
+        public IEnumerable<ApplicationUser> GetActiveUsers(int id)
+        {
+            var posts = GetById(id).Posts;
+
+            if (posts != null || !posts.Any())
+            {
+                var postUsers = posts.Select(p => p.User);
+                var replyUsers = posts.SelectMany(p => p.Replies).Select(r => r.User);
+
+                return postUsers.Union(replyUsers).Distinct();
+            }
+
+            return new List<ApplicationUser>();
         }
 
         public IEnumerable<Category> GetAll()
         {
             return _context.Categories
                 .Include(categories => categories.Posts);
-        }
-
-        public IEnumerable<ApplicationUser> GetAllActiveUsers()
-        {
-            throw new System.NotImplementedException();
         }
 
         public Category GetById(int id)
@@ -45,12 +60,19 @@ namespace collector_forum.Service
             return category;
         }
 
-        public Task UpdateForumDescription(int categoryId, string newDescription)
+        public bool HasRecentPost(int id)
+        {
+            const int hoursAgo = 12;
+            var window = DateTime.Now.AddHours(-hoursAgo);
+            return GetById(id).Posts.Any(post => post.Created > window);
+        }
+
+        public Task UpdateCategoryDescription(int categoryId, string newDescription)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task UpdateForumTitle(int categoryId, string newTitle)
+        public Task UpdateCategoryTitle(int categoryId, string newTitle)
         {
             throw new System.NotImplementedException();
         }

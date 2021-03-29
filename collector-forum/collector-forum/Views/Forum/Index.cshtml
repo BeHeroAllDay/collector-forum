@@ -1,26 +1,63 @@
 ﻿@model collector_forum.Models.Category.CategoryIndexModel
 
-@{ 
+@{
     ViewData["Title"] = "Categories";
 }
-<div class="categories">
-    <h1 class="headersTable">Categories</h1>
 
-    <table class="table table-hover" id="categoryIndexTable">
-        <tbody>
-            @foreach (var category in Model.CategoryList)
-            {
-                <tr>
-                    <td>
-                        <a asp-controller="Forum" asp-action="Topic" asp-route-id="@category.Id">
-                            @category.Name
-                        </a>
-                    </td>
-                    <td disabled>
-                        @category.Description
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading">Browse Categories</div>
+        <div class="sectionDescription">
+            <p>Welcome to <strong>Collectors Forum community</strong>. Posts are categorized by their theme</p>
+            <p>
+                Please read the Forum Guidelines before creating a new post.
+                @if (Context.User.Identity.IsAuthenticated)
+                {
+                    <span>
+                        You must be a
+                        <a asp-area="Identity" asp-page="/Account/Register">registered member</a>
+                        to create a new post
+                    </span>
+                }
+            </p>
+        </div>
+    </div>
+    <div  class="row" id="categoryIndexContent">
+        <table class="table table-hover" id="categoryIndexTable">
+            <tbody>
+                @foreach (var category in Model.CategoryList)
+                {
+                    <tr>
+                        <td>
+                            @*<div class="forumLogo" style="background-image: url(@category.ImageUrl);"></div>*@
+                            <div class="categoryData">
+                                <div class="categoryTitle">
+                                    <a asp-controller="Forum" asp-action="Topic" asp-route-id="@category.Id">@category.Name</a>
+                                </div>
+                                <div class="categorySubTitle">
+                                    @if (category.HasRecentPost)
+                                    {
+                                        <div class="hasRecentPost">Hot</div>
+                                    }
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="categoryPostCount">
+                                @category.NumberOfPosts Posts
+                            </div>
+                            <div class="categoryMemberCount">
+                                @category.NumberOfUsers Users
+                            </div>
+                        </td>
+                        <td>
+                            <div class="categoryDescription">
+                                @category.Description
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

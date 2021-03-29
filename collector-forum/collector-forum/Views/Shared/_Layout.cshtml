@@ -32,18 +32,18 @@
                         </li>
                         @if (signInManager.IsSignedIn(User))
                         {
-                            <li class="dropdown">
+                            <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Settings
                                     <span class="caret"></span>
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <li role="separator" class="dropdown-divider"></li>
                                     <li class="dropdown-header">Profile</li>
                                     <li>
                                         <a class="dropdown-item" asp-controller="Profile" asp-action="Detail" asp-route-id="@userManager.GetUserId(User)">My Profile</a>
                                     </li>
-                                    @if (User.IsInRole("Admin"))
+                                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                                     {
                                         <li role="separator" class="dropdown-divider"></li>
                                         <li class="dropdown-header">Admin</li>
@@ -51,33 +51,16 @@
                                             <a class="dropdown-item" asp-controller="Forum" asp-action="Create">Create Category</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" asp-controller="Admin" asp-action="ListUsers">View Users</a>
+                                            <a class="dropdown-item" asp-controller="Admin" asp-action="CreateRole">Create Role</a>
                                         </li>
-
-                                    }
-                                </ul>
-                            </li>
-                        }
-                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Manage
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin") || User.IsInRole("Mod"))
-                                    {
+                                        <li role="separator" class="dropdown-divider"></li>
                                         <li>
                                             <a class="dropdown-item" asp-controller="Admin" asp-action="ListUsers">View Users</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" asp-controller="Admin" asp-action="CreateRole">Create role</a>
+                                            <a class="dropdown-item" asp-controller="Admin" asp-action="ListRoles">View Roles</a>
                                         </li>
                                     }
-                                    <li>
-                                        <a class="dropdown-item" asp-controller="Admin" asp-action="ListRoles">Roles</a>
-                                    </li>
-
                                 </ul>
                             </li>
                         }

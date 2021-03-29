@@ -15,13 +15,15 @@ namespace collector_forum.Controllers
     {
         private readonly IPost _postService;
         private readonly ICategory _categoryService;
+        private readonly IApplicationUser _userService;
 
         private static UserManager<ApplicationUser> _userManager;
-        public PostController(IPost postService, ICategory categoryService, UserManager<ApplicationUser> userManager)
+        public PostController(IPost postService, ICategory categoryService, UserManager<ApplicationUser> userManager, IApplicationUser userService)
         {
             _postService = postService;
             _categoryService = categoryService;
             _userManager = userManager;
+            _userService = userService;
         }
 
         public IActionResult Index(int id)
@@ -72,9 +74,9 @@ namespace collector_forum.Controllers
             var user = await _userManager.FindByIdAsync(userId);
             var post = BuildPost(model, user);
 
-            _postService.Add(post).Wait(); // It should block 
-
-            // TODO: Implement User Rating Management
+            await _postService.Add(post);
+            await _userService.UpdateUserRating(userId, typeof(Post));
+            
 
             return RedirectToAction("Index", "Post", new { id = post.Id });
         }

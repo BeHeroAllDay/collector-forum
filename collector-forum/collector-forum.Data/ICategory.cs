@@ -8,11 +8,12 @@ namespace collector_forum.Data
     {
         Category GetById(int id);
         IEnumerable<Category> GetAll();
-        IEnumerable<ApplicationUser> GetAllActiveUsers();
 
         Task Create (Category category);
         Task Delete (int categoryId);
-        Task UpdateForumTitle(int categoryId, string newTitle);
-        Task UpdateForumDescription(int categoryId, string newDescription);
+        Task UpdateCategoryTitle(int categoryId, string newTitle);
+        Task UpdateCategoryDescription(int categoryId, string newDescription);
+        IEnumerable<ApplicationUser> GetActiveUsers(int id);
+        bool HasRecentPost(int id);
     }
 }

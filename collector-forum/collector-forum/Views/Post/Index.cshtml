@@ -22,21 +22,22 @@
         </div>
     </div>
 
-
     <div class="row" id="postIndexContent">
         <div class="col-md-3 postAuthorContainer">
             <a class="userName" asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">
                 @Model.AuthorName
-            </a> <br />
-            <span class="postData">@Model.Created</span>
-            @if (@Model.IsAuthorAdmin)
+            </a>
+            @if (Model.IsAuthorAdmin)
             {
                 <span class="isAdmin smaller">Admin</span>
             }
-            @if (@Model.IsAuthorMod)
+            @if (Model.IsAuthorMod)
             {
                 <span class="isMod smaller">Mod</span>
             }
+            <br />
+            <span class="postDate">@Model.Created</span>
+
         </div>
         <div class="col-md-9 postContentContainer">
             <div class="postContent">
@@ -45,10 +46,9 @@
         </div>
     </div>
     <div class="row" id="replyDivider"></div>
-
     @if (User.Identity.IsAuthenticated)
     {
-        <div class="row">
+        <div class="row" id="postReplyRow">
             <span>
                 <a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-newReply">
                     Post Reply
@@ -69,14 +69,13 @@
                     @if (reply.IsAuthorAdmin)
                     {
                         <div class="isAdmin smaller">Admin</div>
-                        <br />
                     }
-                    @if (reply.IsAuthorAdmin)
+                    @if (reply.IsAuthorMod)
                     {
                         <div class="isMod smaller">Mod</div>
-                        <br />
                     }
-                    <span>@reply.Created</span>
+                    <br/>
+                    <span class="postDate">@reply.Created</span>
                 </div>
                 <div class="col-md-9 replyContentContainer">
                     <div class="postContent">

@@ -415,7 +415,6 @@ D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collec
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\collector-forum.genruntimeconfig.cache
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Search\Results.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Profile\Detail.cshtml.g.cs
-D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Profile\Index.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Forum\Create.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Reply\Create.cshtml.g.cs
