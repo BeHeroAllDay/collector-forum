@@ -21,8 +21,7 @@ namespace collector_forum.Controllers
          {
             var posts = _postService.GetFilteredPosts(searchQuery);
 
-            var areNoResults =
-                (!string.IsNullOrEmpty(searchQuery) && !posts.Any());
+            var areNoResults = (!string.IsNullOrEmpty(searchQuery) && !posts.Any());
 
             var postListings = posts.Select(post => new PostListingModel
             {

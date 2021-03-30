@@ -12,4 +12,3 @@ D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collec
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\ref\collector-forum.Data.dll
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\collector-forum.Data.pdb
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\collector-forum.Data.genruntimeconfig.cache
-D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\collector-forum.Data.csprojAssemblyReference.cache

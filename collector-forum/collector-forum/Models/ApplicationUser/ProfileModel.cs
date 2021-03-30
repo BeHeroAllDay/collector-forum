@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 
 namespace collector_forum.Models.ApplicationUser
 {
@@ -9,9 +8,16 @@ namespace collector_forum.Models.ApplicationUser
         public string Email { get; set; }
         public string UserName { get; set; }
         public string UserRating { get; set; }
+
+
         public bool IsAdmin { get; set; }
+        public bool IsMod { get; set; }
+
 
         public DateTime MemberSince { get; set; }
-        public IFormFile ImageUpload { get; set; }
+
+
+        public string Item { get; set; }
+        public string ItemDescription { get; set; }
     }
 }

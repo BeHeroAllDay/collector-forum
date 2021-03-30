@@ -17,6 +17,10 @@
                 {
                     <span class="isAdmin">Admin</span>
                 }
+                @if (@Model.IsMod)
+                {
+                    <span class="isMod">Mod</span>
+                }
             </div>
             <span id="userRating">Current Rating: @Model.UserRating</span>
             <span id="userEmailLabel">Email: @Model.Email</span>

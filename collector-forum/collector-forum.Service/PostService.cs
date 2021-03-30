@@ -59,15 +59,23 @@ namespace collector_forum.Service
         public IEnumerable<Post> GetFilteredPosts(Category category, string searchQuery)
         {
             return string.IsNullOrEmpty(searchQuery)
-                ? category.Posts : category.Posts
-                .Where(post => post.Title.Contains(searchQuery)
-                || post.Content.Contains(searchQuery));
+                ? category.Posts
+                : category.Posts.Where(post
+                    => post.Title.Contains(searchQuery)
+                    || post.Content.Contains(searchQuery));
         }
 
         public IEnumerable<Post> GetFilteredPosts(string searchQuery)
         {
-            return GetAll().Where(post => post.Title.Contains(searchQuery)
-                || post.Content.Contains(searchQuery));
+            var query = searchQuery.ToLower();
+
+            return _context.Posts
+                .Include(post => post.Category)
+                .Include(post => post.User)
+                .Include(post => post.Replies)
+                .Where(post =>
+                post.Title.ToLower().Contains(query)
+                || post.Content.ToLower().Contains(query));
         }
 
         public IEnumerable<Post> GetLatestPosts(int n)
