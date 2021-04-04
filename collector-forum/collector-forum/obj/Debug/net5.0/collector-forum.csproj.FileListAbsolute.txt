@@ -396,12 +396,16 @@ D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collec
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Admin\ManageUserRoles.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Forum\Create.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Forum\Index.cshtml.g.cs
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Forum\Manage.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Forum\Topic.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Post\Create.cshtml.g.cs
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Post\Edit.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Post\Index.cshtml.g.cs
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Post\Manage.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Profile\Detail.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Reply\Create.cshtml.g.cs
+D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Reply\Manage.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Search\Results.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum\obj\Debug\net5.0\Razor\Views\Shared\NotFound.cshtml.g.cs

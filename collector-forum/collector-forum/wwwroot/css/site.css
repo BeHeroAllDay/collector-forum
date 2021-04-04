@@ -94,13 +94,14 @@ a.navbar-brand {
 .sectionDescription {
     color: #eee;
     width: 100%;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 .hasRecentPost {
     padding: 2px;
     background-color: #fe552f;
     color: #fff;
+    text-align: center;
 }
 
 .frontPageHeading {
@@ -266,7 +267,6 @@ a.navbar-brand {
     color: #999;
     font-family: 'Roboto Mono';
     font-size: 0.8em;
-    margin: 20px 0 0 0;
 }
 
 .postAuthor {

@@ -343,7 +343,6 @@ namespace collector_forum.Controllers
                 return View("NotFound");
             }
 
-            var userClaims = await userManager.GetClaimsAsync(user);
             var userRoles = await userManager.GetRolesAsync(user);
 
             var model = new EditUserViewModel
@@ -353,7 +352,6 @@ namespace collector_forum.Controllers
                 UserName = user.UserName,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Claims = userClaims.Select(c => c.Value).ToList(),
                 Roles = userRoles
             };
 

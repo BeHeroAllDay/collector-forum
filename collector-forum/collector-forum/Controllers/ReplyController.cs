@@ -4,6 +4,7 @@ using collector_forum.Models.Reply;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace collector_forum.Controllers
@@ -13,17 +14,20 @@ namespace collector_forum.Controllers
         private readonly IPost _postService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IApplicationUser _userService;
+        private readonly ICategory _categoryService;
 
-        public ReplyController(IPost postService, UserManager<ApplicationUser> userManager, IApplicationUser userService)
+        public ReplyController(ICategory categoryService, IPost postService, UserManager<ApplicationUser> userManager, IApplicationUser userService)
         {
             _postService = postService;
             _userManager = userManager;
             _userService = userService;
+            _categoryService = categoryService;
         }
 
         public async Task<IActionResult> Create(int id)
         {
             var post = _postService.GetById(id);
+            var category = _categoryService.GetById(post.Category.Id);
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             var model = new PostReplyModel
@@ -42,12 +46,29 @@ namespace collector_forum.Controllers
                 CategoryName = post.Category.Title,
                 CategoryImageUrl = post.Category.ImageUrl,
 
-                Created = DateTime.Now
+                Date = DateTime.Now
             };
 
             return View(model);
         }
-    
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var post = _postService.GetById(id);
+
+            if (post == null)
+            {
+                ViewBag.ErrorMessage = $"Post with ID: {id} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                await _postService.Delete(id);
+
+                return RedirectToAction("Manage");
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddReply(PostReplyModel model)
         {

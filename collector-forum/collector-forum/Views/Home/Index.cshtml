@@ -48,6 +48,10 @@
                                         @post.AuthorName
                                     </a>
                                 </span>
+                                (@post.AuthorRating) in
+                                <span class="postForum">
+                                    <a asp-controller="Forum" asp-action="Topic" asp-route-id="@post.CategoryId"></a>@post.CategoryName
+                                </span> on <span class="postDate">@post.DatePosted</span>
                             </div>
                         </td>
                     </tr>

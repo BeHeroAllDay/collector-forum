@@ -10,7 +10,6 @@ namespace collector_forum.Data.Models
         public string Description { get; set; }
         public DateTime Created { get; set; }
         public string ImageUrl { get; set; }
-
         public virtual IEnumerable<Post> Posts { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace collector_forum.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IPost _postService;
+        
 
         public HomeController(ILogger<HomeController> logger, IPost postService)
         {
@@ -61,6 +62,11 @@ namespace collector_forum.Controllers
                 Name = category.Title,
                 ImageUrl = category.ImageUrl
             };
+        }
+
+        public IActionResult Search(string searchQuery)
+        {
+            return RedirectToAction("Topic", "Forum", new { searchQuery });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

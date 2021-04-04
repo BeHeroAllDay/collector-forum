@@ -1,0 +1,49 @@
+﻿@using collector_forum.Models.Category
+
+@model IEnumerable<CategoryListingModel>
+
+@{
+    ViewBag.Title = "Categories list";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="Lists">
+    <h1 class="headersTable">List of all categories</h1>
+
+    @if (Model.Any())
+    {
+        <div class="table-responsive-xl">
+            <table class="table table-hover usersList">
+                <tr style="font-size: 20px; marker:none;">
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col" class="text-center align-middle">Action</th>
+                </tr>
+                @foreach (var category in Model)
+                {
+                    <tr style="font-size: 16px;">
+                        <td class="align-middle">@category.Id</td>
+                        <td class="align-middle">@category.Name</td>
+                        <td class="align-middle">@category.Description</td>
+                        <td class="text-center align-middle">
+                            <div btn-group align-middle>
+                                <form asp-action="Delete" asp-controller="Forum" asp-route-id="@category.Id" method="post">
+                                    <a class="btn btn-success" asp-controller="Forum" asp-action="Edit" asp-route-id="@category.Id">Edit</a>
+                                    <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('Are you sure you want to delete category: @category.Name')">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+    else
+    {
+        <h1>Blablabla</h1>
+    }
+</div>

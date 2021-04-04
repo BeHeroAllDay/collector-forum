@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace collector_forum.Data.Models
@@ -12,6 +11,7 @@ namespace collector_forum.Data.Models
         public DateTime Created { get; set; }
 
         public virtual ApplicationUser User { get; set; }
+
         public virtual Category Category { get; set; }
 
         public virtual IEnumerable<PostReply> Replies { get; set; }

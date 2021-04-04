@@ -15,9 +15,5 @@ namespace collector_forum.Models.ApplicationUser
 
 
         public DateTime MemberSince { get; set; }
-
-
-        public string Item { get; set; }
-        public string ItemDescription { get; set; }
     }
 }

@@ -11,23 +11,30 @@ namespace collector_forum.Service
     public class CategoryService : ICategory
     {
         private readonly ApplicationDbContext _context;
-        public CategoryService(ApplicationDbContext context)
+        private readonly IPost _postService;
+
+        public CategoryService(ApplicationDbContext context, IPost postService)
         {
             _context = context;
+            _postService = postService;
         }
 
         public async Task Create(Category category)
         {
             _context.Add(category);
             await _context.SaveChangesAsync();
-
         }
 
-        public async Task Delete(int categoryId)
+        public async Task Delete(int id)
         {
-            var category = GetById(categoryId);
+            var category = GetById(id);
             _context.Remove(category);
             await _context.SaveChangesAsync();
+        }
+
+        public Task Edit(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<ApplicationUser> GetActiveUsers(int id)
@@ -48,33 +55,64 @@ namespace collector_forum.Service
         public IEnumerable<Category> GetAll()
         {
             return _context.Categories
-                .Include(categories => categories.Posts);
+                .Include(category => category.Posts);
         }
 
         public Category GetById(int id)
         {
-            var category = _context.Categories.Where(c => c.Id == id)
-                .Include(c => c.Posts).ThenInclude(p => p.User)
-                .Include(c => c.Posts).ThenInclude(p => p.Replies).ThenInclude(r => r.User)
+            var category = _context.Categories
+                .Where(c => c.Id == id)
+                .Include(c => c.Posts)
+                .ThenInclude(c => c.User)
+                .Include(c => c.Posts)
+                .ThenInclude(c => c.Replies)
+                .ThenInclude(r => r.User)
                 .FirstOrDefault();
+
+            if (category.Posts == null)
+            {
+                category.Posts = new List<Post>();
+            }
+
             return category;
+        }
+
+        public IEnumerable<Post> GetFilteredPosts(string searchQuery)
+        {
+            return _postService.GetFilteredPosts(searchQuery);
+        }
+
+        public IEnumerable<Post> GetFilteredPosts(int categoryId, string searchQuery)
+        {
+            if (categoryId == 0) return _postService.GetFilteredPosts(searchQuery);
+
+            var category = GetById(categoryId);
+
+            return string.IsNullOrEmpty(searchQuery)
+                ? category.Posts
+                : category.Posts.Where(post
+                    => post.Title.Contains(searchQuery) || post.Content.Contains(searchQuery));
+        }
+
+        public Post GetLatestPost(int categoryId)
+        {
+            var posts = GetById(categoryId).Posts;
+
+            if(posts != null)
+            {
+                return GetById(categoryId).Posts
+                    .OrderByDescending(post => post.Created)
+                    .FirstOrDefault();
+            }
+
+            return new Post();
         }
 
         public bool HasRecentPost(int id)
         {
-            const int hoursAgo = 12;
+            const int hoursAgo = 2;
             var window = DateTime.Now.AddHours(-hoursAgo);
             return GetById(id).Posts.Any(post => post.Created > window);
-        }
-
-        public Task UpdateCategoryDescription(int categoryId, string newDescription)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task UpdateCategoryTitle(int categoryId, string newTitle)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

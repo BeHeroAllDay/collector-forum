@@ -8,7 +8,7 @@ namespace collector_forum.Data
     {
         Post GetById(int id);
         IEnumerable<Post> GetAll();
-        IEnumerable<Post> GetFilteredPosts(Category category, string searchQuery);
+        IEnumerable<Post> GetFilteredPosts(int id, string searchQuery);
         IEnumerable<Post> GetFilteredPosts(string searchQuery);
         IEnumerable<Post> GetPostsByCategory(int id);
         IEnumerable<Post> GetLatestPosts(int n);
@@ -16,7 +16,7 @@ namespace collector_forum.Data
 
         Task Add(Post post);
         Task Delete(int id);
-        Task EditPostContent(int id, string newContent);
+        void UpdateP(Post post);
 
         Task AddReply(PostReply reply);
     }

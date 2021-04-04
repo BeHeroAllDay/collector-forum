@@ -6,14 +6,17 @@ namespace collector_forum.Data
 {
     public interface ICategory
     {
-        Category GetById(int id);
         IEnumerable<Category> GetAll();
-
-        Task Create (Category category);
-        Task Delete (int categoryId);
-        Task UpdateCategoryTitle(int categoryId, string newTitle);
-        Task UpdateCategoryDescription(int categoryId, string newDescription);
         IEnumerable<ApplicationUser> GetActiveUsers(int id);
+        IEnumerable<Post> GetFilteredPosts(string searchQuery);
+        IEnumerable<Post> GetFilteredPosts(int categoryId, string modelSearchQuery);
+
+        Category GetById(int id);
+
+        Task Create(Category category);
+        Task Delete(int categoryId);
+        Task Edit(int id);
         bool HasRecentPost(int id);
+        Post GetLatestPost(int categoryId);
     }
 }

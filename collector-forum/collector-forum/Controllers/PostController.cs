@@ -18,6 +18,7 @@ namespace collector_forum.Controllers
         private readonly IApplicationUser _userService;
 
         private static UserManager<ApplicationUser> _userManager;
+
         public PostController(IPost postService, ICategory categoryService, UserManager<ApplicationUser> userManager, IApplicationUser userService)
         {
             _postService = postService;
@@ -30,7 +31,7 @@ namespace collector_forum.Controllers
         {
             var post = _postService.GetById(id);
 
-            var replies = BuildPostReplies(post.Replies);
+            var replies = BuildPostReplies(post.Replies).OrderBy(reply => reply.Date);
 
             var model = new PostIndexModel
             {
@@ -60,8 +61,8 @@ namespace collector_forum.Controllers
             {
                 CategoryName = category.Title,
                 CategoryId = category.Id,
-                CategoryImageUrl = category.ImageUrl,
-                AuthorName = User.Identity.Name
+                AuthorName = User.Identity.Name,
+                CategoryImageUrl = category.ImageUrl
             };
 
             return View(model);
@@ -76,23 +77,100 @@ namespace collector_forum.Controllers
 
             await _postService.Add(post);
             await _userService.UpdateUserRating(userId, typeof(Post));
-            
 
-            return RedirectToAction("Index", "Post", new { id = post.Id });
+            return RedirectToAction("Index", "Forum", post.Id);
         }
 
-        private bool IsAuthorAdmin(ApplicationUser user)
+        public async Task<IActionResult> Delete(int id)
         {
-            return _userManager.GetRolesAsync(user)
-                .Result.Contains("Admin");
+            var post = _postService.GetById(id);
+
+            if (post == null)
+            {
+                ViewBag.ErrorMessage = $"Post with ID: {id} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                await _postService.Delete(id);
+
+                return RedirectToAction("Manage");
+            }
         }
 
-        private bool IsAuthorMod(ApplicationUser user)
+        [HttpPost]
+        public IActionResult ConfirmDelete(int id)
         {
-            return _userManager.GetRolesAsync(user)
-                .Result.Contains("Mod");
+            var post = _postService.GetById(id);
+            _postService.Delete(id);
+
+            return RedirectToAction("Index", "Forum", new { id = post.Category.Id });
         }
 
+        [HttpGet]
+        public IActionResult Edit(int postId)
+        {
+            Post postt = _postService.GetById(postId);
+            return View(postt);
+
+            //var post = _postService.GetById(postId);
+
+            // if (post == null)
+            // {
+            //     ViewBag.ErrorMessage = $"Post with ID = {postId} cannot be found";
+            //     return View("NotFound");
+            // }
+
+            // var model = new NewPostModel
+            // {
+            //     Id = post.Id,
+            //     Title = post.Title,
+            //     Content = post.Content,
+            //     Created = post.Created,
+            //     CategoryId = post.Category.Id,
+            //     CategoryName = post.Category.Title,
+            //     CategoryImageUrl = post.Category.ImageUrl
+            // };
+
+            // return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Post post)
+        {
+            _postService.UpdateP(post);
+            return RedirectToAction("Manage");
+        }
+
+        public IActionResult Manage()
+        {
+            var userId = _userManager.GetUserId(HttpContext.User);
+
+            if (userId == null)
+            {
+                return View("AccessDenied");
+            }
+
+            ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
+
+            var posts = _postService.GetAll()
+            .Select(p => new PostListingModel
+            {
+                Id = p.Id,
+                Title = p.Title,
+                Content = p.Content,
+                CategoryId = p.Category.Id,
+                CategoryName = p.Category.Title,
+                CategoryImageUrl = p.Category.ImageUrl,
+                DatePosted = DateTime.Now.ToString(),
+                AuthorId = p.User.Id,
+                AuthorName = p.User.UserName,
+            }).Where(u => u.AuthorId.Equals(userId));
+
+            return View(posts);
+        }
+
+        
         private Post BuildPost(NewPostModel model, ApplicationUser user)
         {
             var category = _categoryService.GetById(model.CategoryId);
@@ -107,6 +185,18 @@ namespace collector_forum.Controllers
             };
         }
 
+        private bool IsAuthorAdmin(ApplicationUser user)
+        {
+            return _userManager.GetRolesAsync(user)
+                .Result.Contains("Admin");
+        }
+
+        private bool IsAuthorMod(ApplicationUser user)
+        {
+            return _userManager.GetRolesAsync(user)
+                .Result.Contains("Mod");
+        }
+
         private IEnumerable<PostReplyModel> BuildPostReplies(IEnumerable<PostReply> replies)
         {
             return replies.Select(reply => new PostReplyModel
@@ -115,7 +205,7 @@ namespace collector_forum.Controllers
                 AuthorName = reply.User.UserName,
                 AuthorId = reply.User.Id,
                 AuthorRating = reply.User.Rating,
-                Created = reply.Created,
+                Date = reply.Created,
                 ReplyContent = reply.Content,
                 IsAuthorAdmin = IsAuthorAdmin(reply.User),
                 IsAuthorMod = IsAuthorMod(reply.User)

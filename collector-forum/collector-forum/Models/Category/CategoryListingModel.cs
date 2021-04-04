@@ -14,5 +14,6 @@ namespace collector_forum.Models.Category
         public int NumberOfUsers { get; set; }
 
         public bool HasRecentPost { get; set; }
+        public PostListingModel Latest { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace collector_forum.Models.Reply
         public int AuthorRating { get; set; }
 
 
-        public DateTime Created { get; set; }
+        public DateTime Date { get; set; }
         public string ReplyContent { get; set; }
 
 

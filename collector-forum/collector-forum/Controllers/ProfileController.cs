@@ -38,6 +38,5 @@ namespace collector_forum.Controllers
 
             return View(model);
         }
-
     }
 }

@@ -29,7 +29,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Content"></label>
-                    <input asp-for="Title" class="form-control" />
+                    <textarea asp-for="Content" class="form-control"></textarea>
                 </div>
                 <button type="submit" id="submitPostBtn" class="btn btn-submitPost">
                     Submit Post
@@ -39,27 +39,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-@*<div class="newPost">
-        <h1>Add new post | @Model.CategoryName</h1>
-
-        <form asp-action="AddPost" method="post" id="addPostForm">
-            <div class="form-group">
-                <label asp-for="Title"></label>
-                <input asp-for="Title" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Content"></label>
-                <textarea asp-for="Content" class="form-control"></textarea>
-            </div>
-            <button type="submit" id="sumbitPostBtn" class="btn btn-submitPost">
-                Submit Post
-            </button>
-            <input asp-for="CategoryId" type="hidden" />
-        </form>
-    </div>*@

@@ -1,7 +1,6 @@
 ﻿using collector_forum.Data;
 using collector_forum.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,14 +28,17 @@ namespace collector_forum.Service
             await _context.SaveChangesAsync();
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var post = GetById(id);
+            _context.Remove(post);
+            await _context.SaveChangesAsync();
         }
 
-        public Task EditPostContent(int id, string newContent)
+        public void UpdateP(Post post)
         {
-            throw new NotImplementedException();
+            _context.Posts.Update(post);
+            _context.SaveChanges();
         }
 
         public IEnumerable<Post> GetAll()
@@ -50,19 +52,21 @@ namespace collector_forum.Service
         public Post GetById(int id)
         {
             return _context.Posts.Where(post => post.Id == id)
-                .Include(post => post.User)
-                .Include(post => post.Replies).ThenInclude(reply => reply.User)
                 .Include(post => post.Category)
-                .First();
+                .Include(post => post.User)
+                .Include(post => post.Replies)
+                .ThenInclude(reply => reply.User)
+                .FirstOrDefault();
         }
 
-        public IEnumerable<Post> GetFilteredPosts(Category category, string searchQuery)
+        public IEnumerable<Post> GetFilteredPosts(int id, string searchQuery)
         {
-            return string.IsNullOrEmpty(searchQuery)
-                ? category.Posts
-                : category.Posts.Where(post
-                    => post.Title.Contains(searchQuery)
-                    || post.Content.Contains(searchQuery));
+            var category = _context.Categories.Find(id);
+
+            return string.IsNullOrEmpty(searchQuery) 
+                ? category.Posts 
+                : category.Posts.Where(post => post.Title.Contains(searchQuery)
+                || post.Content.Contains(searchQuery));
         }
 
         public IEnumerable<Post> GetFilteredPosts(string searchQuery)
@@ -89,5 +93,18 @@ namespace collector_forum.Service
                 .Where(category => category.Id == id).First()
                 .Posts;
         }
+
+        public string GetCategoryImageUrl(int id)
+        {
+            var post = GetById(id);
+            return post.Category.ImageUrl;
+        }
+
+        public int GetReplyCount(int id)
+        {
+            return GetById(id).Replies.Count();
+        }
+
+        
     }
 }
