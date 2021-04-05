@@ -18,10 +18,10 @@ namespace collector_forum.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public AdminController(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
+        public AdminController(RoleManager<IdentityRole> _roleManager, UserManager<ApplicationUser> _userManager)
         {
-            this.roleManager = roleManager;
-            this.userManager = userManager;
+            roleManager = _roleManager;
+            userManager = _userManager;
         }
 
         [HttpGet]

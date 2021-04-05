@@ -1,51 +1,55 @@
 ﻿@model collector_forum.Data.Models.Post
 
 @{
-    ViewData["Title"] = "Edit Post";
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="container body-content">
     <div class="row sectionHeader">
-        <div class="sectionHeading">New Post</div>
-        <div class="sectionDescription">
-            <p>
-                Please read the Forum Guidelines before creating a new post.
-
-                @if (!Context.User.Identity.IsAuthenticated)
-                {
-                    <span>You must be a <a asp-controller="Account" asp-action="Register">registered member</a> to create a new post.</span>}
-            </p>
+        <div class="sectionHeading noBorder">
+            Edit post | @Model.Category.Title
+            <div class="forumLogo" style="background-image: url(@Model.Category.ImageUrl);"></div>
+            <span id="headingBtn">
+                <a  asp-action="Manage"class="btn btn-back">
+                    Back to Management
+                </a>
+            </span>
         </div>
-        @if (Context.User.Identity.IsAuthenticated)
-        {
-            <div class="createPost">
-                <div class="row createPost">
-                    <div class="createPostSection">
-                        <div class="authorBlock">
-                            You're submitting this post as <strong>@Model.User.UserName</strong>
-                        </div>
-                        <form asp-action="Edit" method="post" id="addPostForm">
-                            <div class="form-group">
-                                <label asp-for="Title"></label>
-                                <input asp-for="Title" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Content"></label>
-                                <input asp-for="Content" class="form-control" />
-                            </div>
-                            <button type="submit" id="submitPostBtn" class="btn btn-submitPost">
-                                Edit Post
-                            </button>
-                            <input asp-for="Category.Id" type="hidden" value="@Model.Category.Id"/>
-                            <input asp-for="User.Id" type="hidden" value="@Model.User.Id"/>
-                            <input asp-for="Category.Title" type="hidden" value="@Model.Category.Title"/>
-                            <input asp-for="Category.Description" type="hidden"  value="@Model.Category.Description"/>
-                            <input asp-for="Category.ImageUrl" type="hidden" value="@Model.Category.ImageUrl"/>
-                            <input asp-for="Created" type="hidden" value="@DateTime.Now"/>
-                            <input asp-for="Id" type="hidden" value="@Model.Id"/>
-                        </form>
-                    </div>
-                </div>
+    </div>
+    <div class="row createPost">
+        <div class="createPostSection">
+            <div class="authorBlock">
+                You're editing this post as <strong>@Model.User.UserName</strong>
             </div>
-        }
+            <form asp-action="Edit" method="post" id="addPostForm">
+
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="Created" />
+
+                @if (User.IsInRole("Admin") || User.IsInRole("Mod"))
+                {
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input asp-for="Title" class="form-control" />
+                    </div>
+                }
+                else
+                {
+                    <input type="hidden" asp-for="Title" />
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input asp-for="Title" class="form-control" disabled />
+                    </div>
+                }
+                <div class="form-group">
+                    <label asp-for="Content"></label>
+                    <textarea asp-for="Content" class="form-control" rows="5"></textarea>
+                </div>
+                <button type="submit" id="submitPostBtn" class="btn btn-submitPost">
+                    Update Post
+                </button>
+            </form>
+        </div>
     </div>
 </div>

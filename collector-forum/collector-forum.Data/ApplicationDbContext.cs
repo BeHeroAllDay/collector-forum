@@ -1,6 +1,7 @@
 ﻿using collector_forum.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace collector_forum.Data
 {

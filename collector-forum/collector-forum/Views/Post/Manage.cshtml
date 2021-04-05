@@ -12,8 +12,7 @@
 }
 
 <div class="Lists">
-    <h1 class="headersTable">List of your posts</h1>
-
+    <h1 class="headersTable">List of all posts</h1>
     @if (Model.Any() || signInManager.IsSignedIn(User))
     {
         <div class="table-responsive-xl">
@@ -46,8 +45,4 @@
             </table>
         </div>
     }
-    else
-    {
-        <h1>Blablabla</h1>
-    }
-</div>
+    </div>

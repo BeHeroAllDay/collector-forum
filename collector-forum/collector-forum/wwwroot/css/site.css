@@ -441,18 +441,36 @@ a.navbar-brand {
     }
 
 .btn-newReply {
-    background-color: #5C6BC0 !important;
+    background-color: #00695c !important;
     color: #fff !important;
     transition: ease-in 0.1s;
-    border: none !important;
-    border-radius: unset !important;
+    border: solid 1px #00897b;
 }
 
     .btn-newReply:hover {
-        background-color: rgba(19,161,2,0.7) !important;
+        background-color: #00897b !important;
+        color: white !important;
+        transition: ease-in 0.1s;
+        border: solid 1px #00695c;
+    }
+
+
+.btn-editPost {
+    background-color: #b07600 !important;
+    color: black !important;
+    transition: ease-in 0.1s;
+    border: solid 1px #bf9800;
+    float: right;
+}
+
+    .btn-editPost:hover {
+        background-color: #bf9800 !important;
         color: black !important;
         transition: ease-in 0.1s;
+        border: solid 1px #b07600;
     }
+
+
 
 .btn-newPost {
     background-color: #555;

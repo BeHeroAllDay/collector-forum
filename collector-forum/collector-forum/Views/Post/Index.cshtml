@@ -27,11 +27,11 @@
             <a class="userName" asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">
                 @Model.AuthorName
             </a>
-            @if (Model.IsAuthorAdmin)
+            @if (Model.IsAuthorAdmin && Model.IsAuthorMod)
             {
                 <span class="isAdmin smaller">Admin</span>
             }
-            @if (Model.IsAuthorMod)
+            else if (Model.IsAuthorMod)
             {
                 <span class="isMod smaller">Mod</span>
             }
@@ -46,16 +46,32 @@
         </div>
     </div>
     <div class="row" id="replyDivider"></div>
-    @if (User.Identity.IsAuthenticated)
-    {
-        <div class="row" id="postReplyRow">
-            <span>
+    <div class="row" id="postReplyRow">
+        @if (User.Identity.IsAuthenticated)
+        {
+
+            <span class="col">
                 <a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-newReply">
                     Post Reply
                 </a>
             </span>
-        </div>
-    }
+
+        }
+        @if (Model.AuthorName.Contains(User.Identity.Name))
+        {
+            <span class="col-auto">
+                <a asp-controller="Post" asp-action="Edit" asp-route-postId="@Model.Id" class="btn btn-editPost">
+                    Edit Post
+                </a>
+            </span>
+            <form asp-action="Delete" asp-controller="Post" asp-route-postId="@Model.Id" method="post">
+                <button type="submit" class="btn btn-danger"
+                        onclick="return confirm('Are you sure you want to delete post: @Model.Title')">
+                    Delete
+                </button>
+            </form>
+        }
+    </div>
 
     @if (Model.Replies.Any())
     {
@@ -74,7 +90,7 @@
                     {
                         <div class="isMod smaller">Mod</div>
                     }
-                    <br/>
+                    <br />
                     <span class="postDate">@reply.Date</span>
                 </div>
                 <div class="col-md-9 replyContentContainer">

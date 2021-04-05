@@ -16,7 +16,7 @@ namespace collector_forum.Data
 
         Task Add(Post post);
         Task Delete(int id);
-        void UpdateP(Post post);
+        Task Update(Post post);
 
         Task AddReply(PostReply reply);
     }

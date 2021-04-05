@@ -50,7 +50,7 @@
                                 </span>
                                 (@post.AuthorRating) in
                                 <span class="postForum">
-                                    <a asp-controller="Forum" asp-action="Topic" asp-route-id="@post.CategoryId"></a>@post.CategoryName
+                                    <a asp-controller="Forum" asp-action="Topic" asp-route-id="@post.Category.Id">@post.Category.Name</a>
                                 </span> on <span class="postDate">@post.DatePosted</span>
                             </div>
                         </td>

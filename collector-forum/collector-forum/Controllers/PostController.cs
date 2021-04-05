@@ -2,6 +2,7 @@
 using collector_forum.Data.Models;
 using collector_forum.Models.Post;
 using collector_forum.Models.Reply;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,15 +17,22 @@ namespace collector_forum.Controllers
         private readonly IPost _postService;
         private readonly ICategory _categoryService;
         private readonly IApplicationUser _userService;
+        private readonly ApplicationDbContext _context;
 
         private static UserManager<ApplicationUser> _userManager;
 
-        public PostController(IPost postService, ICategory categoryService, UserManager<ApplicationUser> userManager, IApplicationUser userService)
+        public PostController (
+            IPost postService,
+            ICategory categoryService,
+            UserManager<ApplicationUser> userManager,
+            IApplicationUser userService,
+            ApplicationDbContext context )
         {
             _postService = postService;
             _categoryService = categoryService;
             _userManager = userManager;
             _userService = userService;
+            _context = context;
         }
 
         public IActionResult Index(int id)
@@ -83,17 +91,22 @@ namespace collector_forum.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
+            //var userId = _userManager.GetUserId(HttpContext.User);
+            //if (userId == null)
+            //{
+            //    return View("AccessDenied");
+            //}
+
             var post = _postService.GetById(id);
 
             if (post == null)
             {
-                ViewBag.ErrorMessage = $"Post with ID: {id} cannot be found";
+                ViewBag.ErrorMessage = $"Post with ID = {post} cannot be found";
                 return View("NotFound");
             }
             else
             {
                 await _postService.Delete(id);
-
                 return RedirectToAction("Manage");
             }
         }
@@ -107,41 +120,55 @@ namespace collector_forum.Controllers
             return RedirectToAction("Index", "Forum", new { id = post.Category.Id });
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Edit(int postId)
         {
-            Post postt = _postService.GetById(postId);
-            return View(postt);
+            var userId = _userManager.GetUserId(HttpContext.User);
+            if (userId == null)
+            {
+                return View("AccessDenied");
+            }
 
-            //var post = _postService.GetById(postId);
+            var id = _postService.GetById(postId);
 
-            // if (post == null)
-            // {
-            //     ViewBag.ErrorMessage = $"Post with ID = {postId} cannot be found";
-            //     return View("NotFound");
-            // }
+            if (id == null)
+            {
+                ViewBag.ErrorMessage = $"Post with ID = {postId} cannot be found";
+                return View("NotFound");
+            }
 
-            // var model = new NewPostModel
-            // {
-            //     Id = post.Id,
-            //     Title = post.Title,
-            //     Content = post.Content,
-            //     Created = post.Created,
-            //     CategoryId = post.Category.Id,
-            //     CategoryName = post.Category.Title,
-            //     CategoryImageUrl = post.Category.ImageUrl
-            // };
+            Post post = _context.Posts.Find(postId);
 
-            // return View(model);
+            if (post == null)
+            {
+                return View("NotFound");
+            }
+
+            if(userId == post.User.Id)
+            {
+                return View(post);
+            }
+            else
+            {
+                return View("NotFound");
+            }
         }
 
         [HttpPost]
-        public IActionResult Edit(Post post)
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit([Bind(include: "Id,Title,Content,Created")] Post post)
         {
-            _postService.UpdateP(post);
-            return RedirectToAction("Manage");
+            if (ModelState.IsValid)
+            {
+                _context.Entry(post).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                _context.SaveChanges();
+                return RedirectToAction("Manage");
+            }
+            return View(post);
         }
 
+        [Authorize(Roles = "Admin, Mod")]
         public IActionResult Manage()
         {
             var userId = _userManager.GetUserId(HttpContext.User);
@@ -151,7 +178,7 @@ namespace collector_forum.Controllers
                 return View("AccessDenied");
             }
 
-            ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
+            //ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
 
             var posts = _postService.GetAll()
             .Select(p => new PostListingModel
@@ -159,18 +186,14 @@ namespace collector_forum.Controllers
                 Id = p.Id,
                 Title = p.Title,
                 Content = p.Content,
-                CategoryId = p.Category.Id,
-                CategoryName = p.Category.Title,
-                CategoryImageUrl = p.Category.ImageUrl,
                 DatePosted = DateTime.Now.ToString(),
                 AuthorId = p.User.Id,
                 AuthorName = p.User.UserName,
-            }).Where(u => u.AuthorId.Equals(userId));
+            })/*.Where(u => u.AuthorId.Equals(userId))*/;
 
             return View(posts);
         }
 
-        
         private Post BuildPost(NewPostModel model, ApplicationUser user)
         {
             var category = _categoryService.GetById(model.CategoryId);

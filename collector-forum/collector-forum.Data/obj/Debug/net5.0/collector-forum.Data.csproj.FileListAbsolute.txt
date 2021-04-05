@@ -4,7 +4,6 @@ D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collec
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\bin\Debug\net5.0\collector-forum.Data.dll
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\bin\Debug\net5.0\ref\collector-forum.Data.dll
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\bin\Debug\net5.0\collector-forum.Data.pdb
-D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\collector-forum.Data.csprojAssemblyReference.cache
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\collector-forum.Data.GeneratedMSBuildEditorConfig.editorconfig
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\collector-forum.Data.AssemblyInfoInputs.cache
 D:\Piotrek\Desktop\Praca inżynierska\App\collector-forum\collector-forum\collector-forum.Data\obj\Debug\net5.0\collector-forum.Data.AssemblyInfo.cs

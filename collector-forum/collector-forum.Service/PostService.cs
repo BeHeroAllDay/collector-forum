@@ -35,10 +35,10 @@ namespace collector_forum.Service
             await _context.SaveChangesAsync();
         }
 
-        public void UpdateP(Post post)
+        public async Task Update(Post post)
         {
             _context.Posts.Update(post);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
         public IEnumerable<Post> GetAll()
@@ -104,7 +104,5 @@ namespace collector_forum.Service
         {
             return GetById(id).Replies.Count();
         }
-
-        
     }
 }

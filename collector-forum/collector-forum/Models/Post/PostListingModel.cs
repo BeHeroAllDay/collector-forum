@@ -15,10 +15,6 @@ namespace collector_forum.Models.Post
 
         public string DatePosted { get; set; }
 
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
-        public string CategoryImageUrl { get; set; }
-
         public int RepliesCount { get; set; }
     }
 }
