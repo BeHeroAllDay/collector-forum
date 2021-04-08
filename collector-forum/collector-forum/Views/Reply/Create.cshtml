@@ -14,26 +14,28 @@
         </div>
     </div>
     <div class="row replyBg">
-       <div id="postReply">
-           <h3>
-               @Model.PostTitle
-           </h3>
-           <p>
-               @Model.PostContent
-           </p>
-       </div>
+        <div id="postReply">
+            <h3>
+                @Model.PostTitle
+            </h3>
+            <p>
+                @Model.PostContent
+            </p>
+        </div>
     </div>
     <div class="row replyBg">
         <div id="createReply">
             <div class="authorBlock">
-                You're submitting this reply as @Model.AuthorName
+                Please, think ten times before You add this reply =)
             </div>
 
-            <form asp-action="AddReply" method="post" id="addPostForm">
+            <form asp-action="AddReply" method="post" id="addReplyForm">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
                     <label id="replyLabel" asp-for="ReplyContent">Reply: </label>
-                    <textarea asp-for="ReplyContent" rows="20" class="form-control" placeholder="Be creative!"></textarea>
+                    <textarea asp-for="ReplyContent" rows="20" class="form-control" style="color: black !important;">
+                        Think ten times before you add reply =)
+                    </textarea>
                     <span asp-validation-for="ReplyContent" class="text-danger"></span>
                 </div>
                 <button type="submit" id="submitReplyBtn" class="btn btn-submitPost">Submit Reply</button>

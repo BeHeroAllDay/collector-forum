@@ -8,8 +8,6 @@ namespace collector_forum.Data.Models
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
     {
-        [StringLength(25, MinimumLength = 3)]
-        public string Nickname { get; set; }
         [PersonalData]
         [Column(TypeName = "nvarchar(100)")]
         public string FirstName { get; set; }

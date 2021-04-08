@@ -15,7 +15,7 @@ namespace collector_forum.Data
 
         Task Create(Category category);
         Task Delete(int categoryId);
-        Task Edit(int id);
+        Task Update(Category category);
         bool HasRecentPost(int id);
         Post GetLatestPost(int categoryId);
     }

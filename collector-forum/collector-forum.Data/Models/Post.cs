@@ -9,6 +9,7 @@ namespace collector_forum.Data.Models
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime Created { get; set; }
+        public DateTime Updated { get; set; }
 
         public virtual ApplicationUser User { get; set; }
 

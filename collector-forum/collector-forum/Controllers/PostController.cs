@@ -91,11 +91,11 @@ namespace collector_forum.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
-            //var userId = _userManager.GetUserId(HttpContext.User);
-            //if (userId == null)
-            //{
-            //    return View("AccessDenied");
-            //}
+            var userId = _userManager.GetUserId(HttpContext.User);
+            if (userId == null)
+            {
+                return View("AccessDenied");
+            }
 
             var post = _postService.GetById(id);
 
@@ -104,10 +104,14 @@ namespace collector_forum.Controllers
                 ViewBag.ErrorMessage = $"Post with ID = {post} cannot be found";
                 return View("NotFound");
             }
-            else
+            else if (userId == post.User.Id)
             {
                 await _postService.Delete(id);
-                return RedirectToAction("Manage");
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View("NotFound");
             }
         }
 
@@ -145,7 +149,7 @@ namespace collector_forum.Controllers
                 return View("NotFound");
             }
 
-            if(userId == post.User.Id)
+            if(userId == post.User.Id || User.IsInRole("Admin") || User.IsInRole("Mod"))
             {
                 return View(post);
             }
@@ -157,7 +161,7 @@ namespace collector_forum.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit([Bind(include: "Id,Title,Content,Created")] Post post)
+        public IActionResult Edit([Bind(include: "Id, Title, Content, Created, Updated")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -178,8 +182,6 @@ namespace collector_forum.Controllers
                 return View("AccessDenied");
             }
 
-            //ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
-
             var posts = _postService.GetAll()
             .Select(p => new PostListingModel
             {
@@ -188,8 +190,8 @@ namespace collector_forum.Controllers
                 Content = p.Content,
                 DatePosted = DateTime.Now.ToString(),
                 AuthorId = p.User.Id,
-                AuthorName = p.User.UserName,
-            })/*.Where(u => u.AuthorId.Equals(userId))*/;
+                AuthorName = p.User.UserName
+            });
 
             return View(posts);
         }
@@ -208,13 +210,13 @@ namespace collector_forum.Controllers
             };
         }
 
-        private bool IsAuthorAdmin(ApplicationUser user)
+        private static bool IsAuthorAdmin(ApplicationUser user)
         {
             return _userManager.GetRolesAsync(user)
                 .Result.Contains("Admin");
         }
 
-        private bool IsAuthorMod(ApplicationUser user)
+        private static bool IsAuthorMod(ApplicationUser user)
         {
             return _userManager.GetRolesAsync(user)
                 .Result.Contains("Mod");

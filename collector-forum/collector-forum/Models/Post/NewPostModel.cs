@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace collector_forum.Models.Post
+﻿namespace collector_forum.Models.Post
 {
     public class NewPostModel
     {

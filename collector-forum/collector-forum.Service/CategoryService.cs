@@ -32,9 +32,10 @@ namespace collector_forum.Service
             await _context.SaveChangesAsync();
         }
 
-        public Task Edit(int id)
+        public async Task Update(Category category)
         {
-            throw new NotImplementedException();
+            _context.Categories.Update(category);
+            await _context.SaveChangesAsync();
         }
 
         public IEnumerable<ApplicationUser> GetActiveUsers(int id)

@@ -26,6 +26,12 @@
 
                 <input type="hidden" asp-for="Id" />
                 <input type="hidden" asp-for="Created" />
+                <input type="hidden" asp-for="Updated" value="@DateTime.Now" />
+                <input type="hidden" asp-for="Category.Id" />
+                <input type="hidden" asp-for="Category.Title" />
+                <input type="hidden" asp-for="Category.ImageUrl" />
+
+
 
                 @if (User.IsInRole("Admin") || User.IsInRole("Mod"))
                 {

@@ -18,7 +18,7 @@
             </form>
         </div>
     </div>
-    <div class="row forumIndexContent">
+    <div class="row categoriesIndexContent">
         @if (Model.Posts.Any())
         {
             <table class="table table-hover" id="searchIndexTable">
@@ -32,7 +32,7 @@
                                     <div class="postTitle">
                                         <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Title">@post.Title</a>
                                     </div>
-                                    <div class="forumSubTitle">
+                                    <div class="postSubTitle">
                                         <div>
                                             by:
                                             <span class="postAuthor">
@@ -54,7 +54,7 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="forumPostCount">
+                                <div class="categoryPostCount">
                                     Replies: @post.RepliesCount
                                 </div>
                             </td>
@@ -71,7 +71,7 @@
             <div class="noPosts">
                 <i class="fas fa-comments"></i>
                 <h3>
-                    No search results found for @Model.SearchQuery <br />
+                    No search results found for "@Model.SearchQuery" <br />
                 </h3>
             </div>
         }

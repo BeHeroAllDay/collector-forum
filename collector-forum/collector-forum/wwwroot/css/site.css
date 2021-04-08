@@ -58,7 +58,7 @@ a.navbar-brand {
 
 .frontPageLearn {
     font-family: 'Roboto';
-    padding: 20px 20px 20px 20px;
+    padding: 20px 20px 0px 0px;
     height: 300px;
 }
 
@@ -122,6 +122,10 @@ a.navbar-brand {
 
 .frontPageContent {
     background-color: rgba(52,58,64,0.9);
+    padding: 15px;
+}
+
+#searchIndexTable {
     padding: 15px;
 }
 
@@ -218,6 +222,7 @@ a.navbar-brand {
 
 .noPosts {
     text-align: center;
+    margin: auto;
     padding-top: 30px;
     font-family: 'Roboto Mono';
     text-shadow: 2px 2px 3px rgba(52,58,64,0.9);
@@ -251,6 +256,7 @@ a.navbar-brand {
 
 .postTitle {
     font-weight: bold;
+    color: #999 !important;
 }
 
 .postSubTitle {
@@ -266,12 +272,11 @@ a.navbar-brand {
 .postDate {
     color: #999;
     font-family: 'Roboto Mono';
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 .postAuthor {
     font-family: 'Roboto Mono';
-    font-size: 0.8em;
 }
 
 .postLogo {
@@ -355,8 +360,9 @@ a.navbar-brand {
 }
 
 #postReplyRow {
+    margin-top: 10px;
     background-color: rgba(52,58,64,0.5);
-    padding: 8px;
+    padding: 10px;
 }
 
 .row {
@@ -397,6 +403,7 @@ a.navbar-brand {
     border: 1px dashed #1861ac;
     text-align: center;
     padding: 20px;
+    font-size: 1.5em;
 }
 
 #replyLabel {
@@ -555,6 +562,15 @@ a.navbar-brand {
     text-align: center;
 }
 
+#userItems {
+    display: block;
+    color: #bf9800;
+    font-family: 'Roboto';
+    padding-top: 3px;
+    font-size: 20px;
+    text-align: center;
+}
+
 #userName {
     color: #698bfb;
     font-family: 'Roboto';
@@ -605,11 +621,11 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-    color: #fff;
+    color: #ddd;
 }
 
     a:hover {
-        color: #fff;
+        color: #ddd;
     }
 
 

@@ -2,6 +2,7 @@
 using collector_forum.Data.Models;
 using collector_forum.Models.Category;
 using collector_forum.Models.Post;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,15 @@ namespace collector_forum.Controllers
     {
         private readonly ICategory _categoryService;
         private readonly IPost _postService;
+        private readonly ApplicationDbContext _context;
 
-        public ForumController(ICategory categoryService, IPost postService)
+        public ForumController(ICategory categoryService,
+            IPost postService,
+            ApplicationDbContext context)
         {
             _categoryService = categoryService;
             _postService = postService;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -82,6 +87,7 @@ namespace collector_forum.Controllers
             return RedirectToAction("Topic", new { id, searchQuery });
         }
 
+        [Authorize(Roles = "Admin, Mod")]
         public IActionResult Create()
         {
             var model = new AddCategoryModel();
@@ -89,6 +95,7 @@ namespace collector_forum.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Mod")]
         public IActionResult Manage()
         {
             var categories = _categoryService.GetAll()
@@ -102,6 +109,7 @@ namespace collector_forum.Controllers
             return View(categories);
         }
 
+        [Authorize(Roles = "Admin, Mod")]
         public async Task<IActionResult> Delete(int id)
         {
             var cat = _categoryService.GetById(id);
@@ -119,7 +127,46 @@ namespace collector_forum.Controllers
             }
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Admin, Mod")]
+        public IActionResult Edit(int categoryId)
+        {
+            var id = _categoryService.GetById(categoryId);
+
+            if (id == null)
+            {
+                ViewBag.ErrorMessage = $"Post with ID = {categoryId} cannot be found";
+                return View("NotFound");
+            }
+
+            Category category = _context.Categories.Find(categoryId);
+
+            if (category == null)
+            {
+                return View("NotFound");
+            }
+            else
+            {
+                return View(category);
+            }
+        }
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Mod")]
+        public IActionResult Edit([Bind(include: "Id, Title, Description, Created, Updated, ImageUrl, Posts")] Category category)
+        {
+            if(ModelState.IsValid)
+            {
+                _context.Entry(category).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                _context.SaveChanges();
+                return RedirectToAction("Manage");
+            }
+            return View(category);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin, Mod")]
         public async Task<IActionResult> AddCategory(AddCategoryModel model)
         {
             var category = new Category

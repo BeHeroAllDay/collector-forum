@@ -25,6 +25,7 @@
             <span id="userRating">Current Rating: @Model.UserRating</span>
             <span id="userEmailLabel">Email: @Model.Email</span>
             <span id="userCreatedLabel">Member Since: @Model.MemberSince</span>
+            <a id="userItems" asp-controller="Profile" asp-action="Index" asp-route-id="@Model.UserId">List of items</a>
         </div>
     </div>
 </div>
