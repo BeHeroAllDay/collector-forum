@@ -29,8 +29,8 @@
                 <input type="hidden" asp-for="Id" />
                 <input type="hidden" asp-for="User.Id" />
                 <input type="hidden" asp-for="User.UserName" />
-                <input type="hidden" asp-for="Added" />
-                <input type="hidden" asp-for="Updated" value="@DateTime.Now" />
+                <input type="hidden" asp-for="Added"/>
+                <input type="hidden" asp-for="Updated" value="@DateTime.Now"/>
 
                 @if (signInManager.IsSignedIn(User) || User.IsInRole("Admin") || User.IsInRole("Mod"))
                 {
@@ -49,7 +49,7 @@
                 }
                 <div class="form-group">
                     <label asp-for="Description"></label>
-                    <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                    <textarea asp-for="Description" class="form-control" rows="5" cols="10" id="txt"></textarea>
                 </div>
                 <button type="submit" id="submitPostBtn" class="btn btn-submitPost">
                     Update

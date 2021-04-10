@@ -57,7 +57,7 @@ namespace collector_forum.Controllers
 
             await _itemService.Add(item);
 
-            return RedirectToAction("Index", "Forum", item.Id);
+            return RedirectToAction("Index", "Profile", new { id = item.User.Id });
         }
 
         private static Item BuildItem(NewItemModel model, ApplicationUser user)
@@ -90,7 +90,7 @@ namespace collector_forum.Controllers
             else if (userId == item.User.Id)
             {
                 await _itemService.Delete(id);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Profile", new { id = item.User.Id });
             }
             else
             {
@@ -105,7 +105,7 @@ namespace collector_forum.Controllers
             var item = _itemService.GetById(id);
             _itemService.Delete(id);
 
-            return RedirectToAction("Details", "Profile", new { id = item.User.Id });
+            return RedirectToAction("Index", "Profile", new { id = item.User.Id });
         }
 
         [Authorize]
@@ -169,29 +169,44 @@ namespace collector_forum.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit([Bind(include: "Id, Name, Description, Updated")] Item item)
+        public async Task<IActionResult> Edit([Bind(include: "Id, Name, Description, Added")] Item item)
         {
             if (ModelState.IsValid)
             {
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var user = await _userManager.FindByIdAsync(userId);
 
                 if (userId == null)
                 {
                     ViewBag.ErrorMessage = $"Item with ID = {userId} cannot be found";
                     return View("NotFound");
                 }
-
+                var it = UpdateItems(item, user);
                 _context.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 _context.SaveChanges();
+                
 
                 if (User.IsInRole("Admin") || User.IsInRole("Mod"))
                 {
-                    return View("Detail");
+                    
+                    return RedirectToAction("Index", "Profile", new { id = it.User.Id });
                 }
 
-                return View("Detail");
+                return RedirectToAction("Index", "Profile", new { id = it.User.Id });
             }
             return View(item);
+        }
+
+        private static Item UpdateItems(Item model, ApplicationUser user)
+        {
+            return new Item
+            {
+                Name = model.Name,
+                Description = model.Description,
+                Added = model.Added,
+                Updated = model.Updated,
+                User = user
+            };
         }
 
         [Authorize]
@@ -210,6 +225,7 @@ namespace collector_forum.Controllers
                     Id = i.Id,
                     Name = i.Name,
                     Description = i.Description,
+                    Updated = i.Updated,
                     Added = i.Added,
                     UserId = i.User.Id,
                     UserName = i.User.UserName

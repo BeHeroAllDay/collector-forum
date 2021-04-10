@@ -167,7 +167,7 @@ namespace collector_forum.Controllers
             {
                 _context.Entry(post).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 _context.SaveChanges();
-                return RedirectToAction("Manage");
+                return RedirectToAction("Index", "Post" , new { id = post.Id});
             }
             return View(post);
         }
