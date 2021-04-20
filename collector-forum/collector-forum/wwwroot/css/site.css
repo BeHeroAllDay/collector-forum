@@ -125,6 +125,22 @@ a.navbar-brand {
     padding: 15px;
 }
 
+.Statements {
+    background-color: rgba(52,58,64,0.9);
+    padding: 20px;
+    color: #c8c8c8;
+    text-align: justify;
+    margin-top: 15px;
+}
+
+.h22 {
+    color: white;
+}
+
+
+
+
+
 #searchIndexTable {
     padding: 15px;
 }
@@ -731,8 +747,8 @@ body {
 
 .card {
     margin-top: 25px;
-    background-color: rgba(52,58,64,0.8);
-    color: #fff;
+    /*background-color: rgba(52,58,64,0.8);*/
+    color: black;
 }
 
 #manage {

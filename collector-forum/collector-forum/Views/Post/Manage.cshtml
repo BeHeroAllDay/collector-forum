@@ -27,8 +27,8 @@
                     <td class="align-middle">@post.Title</td>
                     <td class="align-middle">@post.Content</td>
                     <td class="align-middle">@post.AuthorName</td>
-                    <td class="text-center align-middle">
-                        <div btn-group align-middle>
+                    <td class="text-center align-middle"  style="width: 20%;">
+                        <div class="btn-group align-middle">
                             <form asp-action="Delete" asp-controller="Post" asp-route-id="@post.Id" method="post">
                                 <a class="btn btn-success" asp-controller="Post" asp-action="Edit" asp-route-postId="@post.Id">Edit</a>
                                 <button type="submit" class="btn btn-danger"

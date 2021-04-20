@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 
 namespace collector_forum.Data
 {
@@ -15,7 +16,7 @@ namespace collector_forum.Data
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<PostReply> PostReplies { get; set; }
+        public DbSet<PostReplies> PostReplies { get; set; }
         public DbSet<Item> Items { get; set; }
     }
 }

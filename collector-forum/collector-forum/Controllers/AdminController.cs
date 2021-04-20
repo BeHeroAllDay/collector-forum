@@ -1,5 +1,7 @@
-﻿using collector_forum.Data.Models;
-using collector_forum.Models;
+﻿using collector_forum.Data;
+using collector_forum.Data.Models;
+using collector_forum.Models.Items;
+using collector_forum.Service;
 using collector_forum.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -7,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace collector_forum.Controllers
@@ -17,11 +18,18 @@ namespace collector_forum.Controllers
     {
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IItem itemService;
+        private readonly ApplicationDbContext context;
 
-        public AdminController(RoleManager<IdentityRole> _roleManager, UserManager<ApplicationUser> _userManager)
+        public AdminController(RoleManager<IdentityRole> _roleManager,
+            UserManager<ApplicationUser> _userManager,
+            IItem _itemService,
+            ApplicationDbContext _context)
         {
             roleManager = _roleManager;
             userManager = _userManager;
+            itemService = _itemService;
+            context = _context;
         }
 
         [HttpGet]
@@ -98,6 +106,9 @@ namespace collector_forum.Controllers
         {
             var user = await userManager.FindByIdAsync(id);
 
+            var userItems = itemService.GetAll().Where(x => x.User.Id == user.Id);
+            
+
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"User with ID = {id} cannot be found";
@@ -105,6 +116,8 @@ namespace collector_forum.Controllers
             }
             else
             {
+                context.RemoveRange(userItems);
+
                 var result = await userManager.DeleteAsync(user);
 
                 if (result.Succeeded)

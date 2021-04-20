@@ -40,7 +40,7 @@ namespace collector_forum.Service
 
             if (type == typeof(Post))
                 inc = 1;
-            if (type == typeof(PostReply))
+            if (type == typeof(PostReplies))
                 inc = 3;
 
             return userRating + inc;

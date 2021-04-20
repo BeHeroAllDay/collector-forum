@@ -22,7 +22,7 @@ namespace collector_forum.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task AddReply(PostReply reply)
+        public async Task AddReply(PostReplies reply)
         {
             _context.PostReplies.Add(reply);
             await _context.SaveChangesAsync();
@@ -31,7 +31,8 @@ namespace collector_forum.Service
         public async Task Delete(int id)
         {
             var post = GetById(id);
-            _context.Remove(post);
+            _context.Entry(post).State = EntityState.Deleted;
+            //_context.Remove(post);
             await _context.SaveChangesAsync();
         }
 

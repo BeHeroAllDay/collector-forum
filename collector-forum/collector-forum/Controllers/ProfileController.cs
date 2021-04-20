@@ -19,7 +19,7 @@ namespace collector_forum.Controllers
         private readonly IItem _itemService;
         private readonly ApplicationDbContext _context;
 
-        public ProfileController (
+        public ProfileController(
             IItem itemService,
             IApplicationUser userService,
             UserManager<ApplicationUser> userManager,
@@ -184,11 +184,11 @@ namespace collector_forum.Controllers
                 var it = UpdateItems(item, user);
                 _context.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 _context.SaveChanges();
-                
+
 
                 if (User.IsInRole("Admin") || User.IsInRole("Mod"))
                 {
-                    
+
                     return RedirectToAction("Index", "Profile", new { id = it.User.Id });
                 }
 

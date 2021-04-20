@@ -52,7 +52,7 @@ namespace collector_forum.Controllers
             return View(model);
         }
 
-        public IActionResult Topic(int id, string searchQuery)
+        public IActionResult Topic(int id, string searchQuery="")
         {
             var category = _categoryService.GetById(id);
             var posts = category.Posts;

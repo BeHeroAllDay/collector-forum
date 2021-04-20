@@ -15,6 +15,6 @@ namespace collector_forum.Data.Models
 
         public virtual Category Category { get; set; }
 
-        public virtual IEnumerable<PostReply> Replies { get; set; }
+        public virtual IEnumerable<PostReplies> Replies { get; set; }
     }
 }

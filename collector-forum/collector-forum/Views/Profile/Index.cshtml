@@ -16,47 +16,59 @@
 <div class="Lists">
     <div class="headersTable">
         <h1>List of items selected user</h1>
-        <h3>To manage your items first add one!</h3>
     </div>
-    <div class="table-responsive-xl">
-        <input hidden />
-        <table class="table table-hover usersList">
-            <tr style="font-size: 20px; marker:none;">
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Author</th>
-                <th scope="col">Added</th>
-                <th scope="col">Updated</th>
-                @if (Context.User.Identity.Name == Model.First().UserName || User.IsInRole("Admin") || User.IsInRole("Mod"))
-                {
-                    <th scope="col" class="text-center align-middle">Action</th>
-                }
-
-            </tr>
-            @foreach (var item in Model)
-            {
-                <tr style="font-size: 16px;">
-                    <td class="align-middle">@item.Name</td>
-                    <td class="align-middle">@item.Description</td>
-                    <td class="align-middle">@item.UserName</td>
-                    <td class="align-middle">@item.Added</td>
-                    <td class="align-middle">@item.Updated</td>
-                    @if (item.UserId.Contains(userManager.GetUserId(User)) || User.IsInRole("Admin") || User.IsInRole("Mod"))
+    @if (Model.Any())
+    {
+        <div class="table-responsive-xl">
+            <table class="table table-hover usersList">
+                <tr style="font-size: 20px; marker:none;">
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Added</th>
+                    <th scope="col">Updated</th>
+                    @if (Context.User.Identity.Name == Model.FirstOrDefault().UserName || User.IsInRole("Admin") || User.IsInRole("Mod"))
                     {
-                        <td class="text-center align-middle">
-                            <div btn-group align-middle>
-                                <form asp-action="Delete" asp-controller="Profile" asp-route-id="@item.Id" method="post">
-                                    <a class="btn btn-success" asp-controller="Profile" asp-action="Edit" asp-route-itemId="@item.Id">Edit</a>
-                                    <button type="submit" class="btn btn-danger"
-                                            onclick="return confirm('Are you sure you want to delete post: @item.Name')">
-                                        Delete
-                                    </button>
-                                </form>
-                            </div>
-                        </td>
+                        <th scope="col" class="text-center align-middle">Action</th>
+                    }
+                    else
+                    {
+
                     }
                 </tr>
-            }
-        </table>
-    </div>
+                @foreach (var item in Model)
+                {
+                    <tr style="font-size: 16px;">
+                        <td class="align-middle">@item.Name</td>
+                        <td class="align-middle">@item.Description</td>
+                        <td class="align-middle">@item.UserName</td>
+                        <td class="align-middle">@item.Added</td>
+                        <td class="align-middle">@item.Updated</td>
+                        @if (item.UserId.Contains(userManager.GetUserId(User)) || User.IsInRole("Admin") || User.IsInRole("Mod"))
+                        {
+                            <td class="text-center align-middle">
+                                <div btn-group align-middle>
+                                    <form asp-action="Delete" asp-controller="Profile" asp-route-id="@item.Id" method="post">
+                                        <a class="btn btn-success" asp-controller="Profile" asp-action="Edit" asp-route-itemId="@item.Id">Edit</a>
+                                        <button type="submit" class="btn btn-danger"
+                                                onclick="return confirm('Are you sure you want to delete post: @item.Name')">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        }
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="noPosts">
+            <h3 style="border-top: 1px solid white !important; padding-top: 15px;">
+                There is no items to display <br />
+            </h3>
+        </div>
+    }
 </div>

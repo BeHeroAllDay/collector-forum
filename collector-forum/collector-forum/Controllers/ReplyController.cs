@@ -76,8 +76,10 @@ namespace collector_forum.Controllers
                 return View("NotFound");
             }
 
-            _context.Remove(reply);
-            return RedirectToAction("Index", "Home");
+            _context.PostReplies.Remove(reply);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Forum");
         }
 
         [HttpPost]
@@ -120,7 +122,7 @@ namespace collector_forum.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit([Bind(include: "Id, Content, Created, Updated")] PostReply reply)
+        public IActionResult Edit([Bind(include: "Id, Content, Created, Updated")] PostReplies reply)
         {
             if (ModelState.IsValid)
             {
@@ -142,16 +144,16 @@ namespace collector_forum.Controllers
 
             await _postService.AddReply(reply);
 
-            await _userService.UpdateUserRating(userId, typeof(PostReply));
+            await _userService.UpdateUserRating(userId, typeof(PostReplies));
 
             return RedirectToAction("Index", "Post", new { id = model.PostId });
         }
 
-        private PostReply BuildReply(PostReplyModel model, ApplicationUser user)
+        private PostReplies BuildReply(PostReplyModel model, ApplicationUser user)
         {
             var post = _postService.GetById(model.PostId);
 
-            return new PostReply
+            return new PostReplies
             {
                 Post = post,
                 Content = model.ReplyContent,

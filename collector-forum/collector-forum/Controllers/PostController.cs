@@ -5,9 +5,11 @@ using collector_forum.Models.Reply;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace collector_forum.Controllers
@@ -21,12 +23,12 @@ namespace collector_forum.Controllers
 
         private static UserManager<ApplicationUser> _userManager;
 
-        public PostController (
+        public PostController(
             IPost postService,
             ICategory categoryService,
             UserManager<ApplicationUser> userManager,
             IApplicationUser userService,
-            ApplicationDbContext context )
+            ApplicationDbContext context)
         {
             _postService = postService;
             _categoryService = categoryService;
@@ -39,7 +41,7 @@ namespace collector_forum.Controllers
         {
             var post = _postService.GetById(id);
 
-            var replies = BuildPostReplies(post.Replies).OrderBy(reply => reply.Date);
+            var replies = BuildPostReplies(post.Replies);
 
             var model = new PostIndexModel
             {
@@ -86,34 +88,29 @@ namespace collector_forum.Controllers
             await _postService.Add(post);
             await _userService.UpdateUserRating(userId, typeof(Post));
 
-            return RedirectToAction("Index", "Forum", post.Id);
+            return RedirectToAction("Topic", "Forum", new { id = model.CategoryId });
         }
 
         public async Task<IActionResult> Delete(int id)
         {
-            var userId = _userManager.GetUserId(HttpContext.User);
-            if (userId == null)
-            {
-                return View("AccessDenied");
-            }
-
             var post = _postService.GetById(id);
+
+            var reply = post.Replies.Where(x => x.Post.Id == post.Id);
 
             if (post == null)
             {
                 ViewBag.ErrorMessage = $"Post with ID = {post} cannot be found";
                 return View("NotFound");
             }
-            else if (userId == post.User.Id)
-            {
-                await _postService.Delete(id);
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                return View("NotFound");
-            }
+
+            _context.RemoveRange(reply);
+
+            await _postService.Delete(id);
+
+            return RedirectToAction("Topic", "Forum", new { id = post.Category.Id });
+
         }
+
 
         [HttpPost]
         public IActionResult ConfirmDelete(int id)
@@ -149,7 +146,7 @@ namespace collector_forum.Controllers
                 return View("NotFound");
             }
 
-            if(userId == post.User.Id || User.IsInRole("Admin") || User.IsInRole("Mod"))
+            if (userId == post.User.Id || User.IsInRole("Admin") || User.IsInRole("Mod"))
             {
                 return View(post);
             }
@@ -167,7 +164,7 @@ namespace collector_forum.Controllers
             {
                 _context.Entry(post).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 _context.SaveChanges();
-                return RedirectToAction("Index", "Post" , new { id = post.Id});
+                return RedirectToAction("Index", "Post", new { id = post.Id });
             }
             return View(post);
         }
@@ -222,7 +219,7 @@ namespace collector_forum.Controllers
                 .Result.Contains("Mod");
         }
 
-        private IEnumerable<PostReplyModel> BuildPostReplies(IEnumerable<PostReply> replies)
+        private IEnumerable<PostReplyModel> BuildPostReplies(IEnumerable<PostReplies> replies)
         {
             return replies.Select(reply => new PostReplyModel
             {

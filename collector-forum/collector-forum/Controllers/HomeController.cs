@@ -29,6 +29,16 @@ namespace collector_forum.Controllers
             return View(model);
         }
 
+        public IActionResult Rules()
+        {
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
         public HomeIndexModel BuildHomeIndexModel()
         {
             var latestPosts = _postService.GetLatestPosts(10);

@@ -18,6 +18,6 @@ namespace collector_forum.Data
         Task Delete(int id);
         Task Update(Post post);
 
-        Task AddReply(PostReply reply);
+        Task AddReply(PostReplies reply);
     }
 }
