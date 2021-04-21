@@ -747,8 +747,8 @@ body {
 
 .card {
     margin-top: 25px;
-    /*background-color: rgba(52,58,64,0.8);*/
-    color: black;
+    background-color: rgba(52,58,64,0.8);
+    color: white;
 }
 
 #manage {

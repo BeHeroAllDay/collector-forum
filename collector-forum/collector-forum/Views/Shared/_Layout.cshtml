@@ -44,10 +44,10 @@
                                         <a class="dropdown-item" asp-controller="Profile" asp-action="Detail" asp-route-id="@userManager.GetUserId(User)">My Profile</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" asp-controller="Profile" asp-action="Index" asp-route-id="@userManager.GetUserId(User)">Items of user</a>
+                                        <a class="dropdown-item" asp-controller="Profile" asp-action="Index" asp-route-id="@userManager.GetUserId(User)">My items</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" asp-controller="Profile" asp-action="Create" asp-route-id="@userManager.GetUserId(User)">Add item</a>
+                                        <a class="dropdown-item" asp-controller="Profile" asp-action="Create" asp-route-id="@userManager.GetUserId(User)">Add item </a>
                                     </li>
 
                                     @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))

@@ -10,11 +10,15 @@
         <div class="sectionHeading noBorder">
             Edit post | @Model.Category.Title
             <div class="forumLogo" style="background-image: url(@Model.Category.ImageUrl);"></div>
-            <span id="headingBtn">
-                <a  asp-action="Manage"class="btn btn-back">
-                    Back to Management
-                </a>
-            </span>
+            @if (User.IsInRole("Admin") || User.IsInRole("Mod"))
+            {
+                <span id="headingBtn">
+                    <a asp-action="Manage" class="btn btn-back">
+                        Back to Management
+                    </a>
+                </span>
+            }
+
         </div>
     </div>
     <div class="row createPost">
@@ -30,8 +34,6 @@
                 <input type="hidden" asp-for="Category.Id" />
                 <input type="hidden" asp-for="Category.Title" />
                 <input type="hidden" asp-for="Category.ImageUrl" />
-
-
 
                 @if (User.IsInRole("Admin") || User.IsInRole("Mod"))
                 {
