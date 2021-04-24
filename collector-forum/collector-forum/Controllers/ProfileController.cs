@@ -181,18 +181,17 @@ namespace collector_forum.Controllers
                     ViewBag.ErrorMessage = $"Item with ID = {userId} cannot be found";
                     return View("NotFound");
                 }
-                var it = UpdateItems(item, user);
+                var itm = UpdateItems(item, user);
                 _context.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 _context.SaveChanges();
-
 
                 if (User.IsInRole("Admin") || User.IsInRole("Mod"))
                 {
 
-                    return RedirectToAction("Index", "Profile", new { id = it.User.Id });
+                    return RedirectToAction("Index", "Profile", new { id = itm.User.Id });
                 }
 
-                return RedirectToAction("Index", "Profile", new { id = it.User.Id });
+                return RedirectToAction("Index", "Profile", new { id = itm.User.Id });
             }
             return View(item);
         }

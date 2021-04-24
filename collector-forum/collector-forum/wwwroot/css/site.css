@@ -751,6 +751,12 @@ body {
     color: white;
 }
 
+.white {
+    margin-top: 25px;
+    background-color: rgba(255,255,255,0.8);
+    color: #40454b;
+}
+
 #manage {
     padding-top: 8.5px;
 }

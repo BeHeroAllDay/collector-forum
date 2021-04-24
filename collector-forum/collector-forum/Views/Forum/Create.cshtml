@@ -11,16 +11,16 @@
             <form asp-action="AddCategory" method="post" id="createCategoryForm" enctype="multipart/form-data">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Title">Category Title</label>
+                    <label asp-for="Title">Title</label>
                     <input asp-for="Title" class="form-control" placeholder="Choose category title" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Description">Category Description</label>
+                    <label asp-for="Description">Description</label>
                     <input asp-for="Description" class="form-control" placeholder="Write a brief description of the category topic" />
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
-                <button type="submit" id="newCategoryBtn" class="btn btn-submitPost">Create Category</button>
+                <button type="submit" id="newCategoryBtn" class="btn btn-submitPost">Create</button>
             </form>
         </div>
     </div>
